@@ -4,12 +4,6 @@
   color: white; /* Text color */
 }
 
-.powder-blue-metallic {
-  background-color: #b0e0e6; /* Powder Blue */
-  border: 1px solid #b0e0e6; /* Border color */
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1), 0px 1px 3px rgba(0, 0, 0, 0.08); /* Metallic effect */
-}
-
 /* Adjust styles for buttons */
 .custom-button {
   margin-right: 10px;
