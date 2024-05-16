@@ -1,8 +1,34 @@
 /* Define a class for the space grey */
-.space-grey-background {
+* {
   background-color: #33383D; /* Space Grey color */
   color: white; /* Text color */
 }
+
+#logo {
+  max-width: 80px;
+  max-height: 80px;
+  margin-top: 5px;
+  margin-left: 5px;
+}
+
+.header{
+  display: flex;
+  justify-content: space-between;
+}
+
+.header-list {
+  font-size: x-large;
+  list-style: none;
+  display: flex;
+  padding-right: 30px;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.header-li{
+  margin-right: 40px;
+}
+
 
 /* Adjust styles for buttons */
 .custom-button {
