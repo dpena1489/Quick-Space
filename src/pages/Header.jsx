@@ -1,6 +1,8 @@
 import React from 'react';
 import QuickSpaceLogo from '../../images/QuickSpace_logo2.jpg';
-import '../App.css'
+import CheckoutForm from '../CheckoutForm'; // imports the CheckoutForm component
+import { Link } from 'react-router-dom';
+import '../App.css';
 
 function Header(){
     return(
@@ -17,7 +19,8 @@ function Header(){
                 <ul class='header-list'>
                     <li class='header-li'>Profile</li>
                     <li class='header-li'>Search</li>
-                    {/* <li><CheckoutBtn /></li> */}
+                    <li><CheckoutForm /></li>
+                    <li><Link to="/cart">Cart</Link></li>
                 </ul>
             </header>
         </div>
