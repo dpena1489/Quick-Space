@@ -17,6 +17,7 @@ function Header(){
                 <ul class='header-list'>
                     <li class='header-li'>Profile</li>
                     <li class='header-li'>Search</li>
+                    {/* <li><CheckoutBtn /></li> */}
                 </ul>
             </header>
         </div>
