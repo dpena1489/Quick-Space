@@ -6,7 +6,7 @@ function Home() {
     <div className="container mt-5">
       <div className="columns is-centered">
         <div className="column is-half">
-          <div className="card has-background-info-35" style={{ borderRadius: '50px' }}>
+          <div className="card has-background-info-35">
             <div className="card-content">
               <div className="content">
                 <h1 className="title has-text-primary-100">Welcome to Quick Space</h1>
