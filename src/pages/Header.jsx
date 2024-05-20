@@ -1,11 +1,13 @@
 import React from 'react';
 import QuickSpaceLogo from '../../images/QuickSpace_logo2.jpg';
-import '../App.css'
+import CheckoutForm from '../pages/CheckoutForm'; // imports the CheckoutForm component
+import { Link } from 'react-router-dom';
+import '../App.css';
 
 function Header(){
     return(
         <div>
-            <header class='header'>
+            <header className='header'>
             <figure id='logo' >
                   <img
                     src={QuickSpaceLogo}
@@ -14,9 +16,11 @@ function Header(){
                   />
                 </figure>
                 
-                <ul class='header-list'>
-                    <li class='header-li'>Profile</li>
-                    <li class='header-li'>Search</li>
+                <ul className='header-list'>
+                    <li className='header-li'>Profile</li>
+                    <li className='header-li'>Search</li>
+                    <li><CheckoutForm /></li>
+                    <li><button><Link to="/cart">Cart</Link></button></li>
                 </ul>
             </header>
         </div>
