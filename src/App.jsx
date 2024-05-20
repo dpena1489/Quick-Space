@@ -9,8 +9,9 @@ import Header from './pages/Header'
 function App() {
   return (
     <div>
+      <Header></Header>
       <Home/>
-//       <LoginSignup/>
+{/* //       <LoginSignup/> */}
       
  
     </div>
