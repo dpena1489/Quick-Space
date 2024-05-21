@@ -2,8 +2,8 @@ import React from 'react'
 import './LoginSignup.css'
 
 // import user_icon from '.scr/assets/user_icon.png'
-// import email_icon from './email_icon.png'
-// import password_icon from './password_icon.png'
+import email_icon from '../../assets/email.png'
+import password_icon from './password_icon.png'
 
 export const LoginSignup = () => {
     return (
@@ -20,7 +20,7 @@ export const LoginSignup = () => {
             </div>
             <div className='inputs'>
                 <div className='input'>
-                    <img src="{email_icon}" alt="" />
+                    <img src={email_icon} alt="" />
                     <input type="email" />
                 </div>
             </div>
