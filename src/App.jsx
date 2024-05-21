@@ -9,14 +9,14 @@ import Header from './pages/Header'
 
 
 function App() {
-    return (
-            <div>
-                <Home/>
-                <Header />
-                <Outlet />
-      //       <LoginSignup/>
-            </div>
-    );
+  return (
+    <div>
+      <Home/>
+//       <LoginSignup/>
+      
+ 
+    </div>
+  );
 }
 
 export default App;
