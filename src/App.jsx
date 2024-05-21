@@ -11,18 +11,14 @@ import { LoginSignup } from './pages/LoginSignup/LoginSignup';
 >>>>>>>>> Temporary merge branch 2
 
 function App() {
-  return (
-    <div>
-<<<<<<<<< Temporary merge branch 1
-      <Header></Header>
-      <Home />
-=========
-      <Home/>
-      <LoginSignup/>
-      
->>>>>>>>> Temporary merge branch 2
-    </div>
-  );
+    return (
+            <div>
+                <Home/>
+                <Header />
+                <Outlet />
+      //       <LoginSignup/>
+            </div>
+    );
 }
 
 export default App;
