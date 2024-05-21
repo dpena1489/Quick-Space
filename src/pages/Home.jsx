@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
@@ -31,12 +30,10 @@ const cardArray = [
   }
 ]
 
-=======
 import { useState } from 'react';
 import QuickSpaceLogo from '../../images/QuickSpace_logo2.jpg'; // Adjust the path according to your folder structure
 import axios from 'axios';
 import Picturegrid from '../components/Picturegrid';
->>>>>>> dc2ff9c76e5d40803aeafd2fed6fcb3dfe1c68a4
 
 function Home() {
   const [pId, setpId] = useState()
@@ -115,23 +112,6 @@ const options = {
 }
 
   return (
-<<<<<<< HEAD
-    <div class = "home-cards">
-      {cardArray.map((card, index) => {
-        return (
-          <div id={index}>
-            <Card style={{ width: '18rem' }}>
-            <Card.Img variant="top" src="holder.js/100px180" />
-            <Card.Body>
-              <Card.Title style={{color: 'white'}}>{card.title}</Card.Title>
-              <Card.Text>{card.text}</Card.Text>
-              <Button variant="primary">{card.buttonText}</Button>
-            </Card.Body>
-          </Card>
-          </div>
-        )
-      })}
-=======
     <div className="container mt-5">
       <div className="columns is-centered">
         <div className="column is-half">
@@ -161,7 +141,6 @@ const options = {
       {pictureArray}
       <Picturegrid />
       <button onClick={testResults}>test</button>
->>>>>>> dc2ff9c76e5d40803aeafd2fed6fcb3dfe1c68a4
     </div>
   );
 }

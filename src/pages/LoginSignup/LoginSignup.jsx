@@ -1,9 +1,9 @@
 import React from 'react'
 import './LoginSignup.css'
 
-// import user_icon from '.scr/assets/user_icon.png'
-import email_icon from '../../assets/email.png'
-import password_icon from './password_icon.png'
+ import user_icon from '..scr/assets/user_icon.png'
+import email_icon from '..scr/assets/email_icon.png'
+ import password_icon from '..scr/assets/password_icon.png'
 
 export const LoginSignup = () => {
     return (

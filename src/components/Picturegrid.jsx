@@ -1,6 +1,6 @@
 const Picturegrid = () => {
     return (
-        <img src={}></img>
+        <img src={"your_image_source_here"}></img>
         
     )
 } 
