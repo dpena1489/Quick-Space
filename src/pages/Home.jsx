@@ -1,13 +1,12 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import '../App.css'
 import { useState } from 'react';
-import QuickSpaceLogo from '../../images/QuickSpace_logo2.jpg'; // Adjust the path according to your folder structure
 import axios from 'axios';
 import Picturegrid from '../components/Picturegrid';
-// import QuickSpaceLogo from '../../images/QuickSpace_logo2.jpg'; // Adjust the path according to your folder structure
+import 'bootstrap/dist/css/bootstrap.min.css';
+import '../App.css'
+import QuickSpaceLogo from '../../images/QuickSpace_logo2.jpg'; // Adjust the path according to your folder structure
 
 // Comment I want to push to save upstream
 
@@ -34,68 +33,66 @@ const cardArray = [
   }
 ]
 
-
-// >>>>>>> dc2ff9c76e5d40803aeafd2fed6fcb3dfe1c68a4
-
 function Home() {
   const [pId, setpId] = useState()
   console.log(pId)
+
   const testResults = async () => {
     //first API call GETs location number
     const locationOptions = {
       method: 'GET',
       url: 'https://apartment-list.p.rapidapi.com/locations',
-      params: {location: 'Texas'},
+      params: { location: 'Texas' },
       headers: {
         'X-RapidAPI-Key': 'a404c68f68msh0b4f4d1ac118231p1ff281jsn93d59b2b3121',
         'X-RapidAPI-Host': 'apartment-list.p.rapidapi.com'
       }
     };
-    
+
     try {
       const response = await axios.request(locationOptions);
       console.log(response.data.data);
       const locationArray = response.data.data;
       const locationKey = locationArray[0].key;
-      
+
       //second API call GETs properties
       // locationArray.forEach(async (location) => {
       //   console.log(location)
-        const options = {
-          method: 'GET',
-          url: 'https://apartment-list.p.rapidapi.com/properties',
-          params: {
-            locationKey: locationKey,
-            maxPrice: '2000',
-            minPrice: '1800'
-          },
-          headers: {
-            'X-RapidAPI-Key': 'a404c68f68msh0b4f4d1ac118231p1ff281jsn93d59b2b3121',
-            'X-RapidAPI-Host': 'apartment-list.p.rapidapi.com'
-          }
-        };
-        
-        try {
-          const response = await axios.request(options);
-          console.log(response.data.data[1].id);
-          // setpId(response.data.data[1].id);
-          // console.log(pId)
-          // listProperties();
-          for(let i = 0; i < 10; i++) {
-            const pId = response.data.data[i].id;
-            listProperties(pId);
-          }
-        } catch (error) {
-          console.error(error);
+      const options = {
+        method: 'GET',
+        url: 'https://apartment-list.p.rapidapi.com/properties',
+        params: {
+          locationKey: locationKey,
+          maxPrice: '2000',
+          minPrice: '1800'
+        },
+        headers: {
+          'X-RapidAPI-Key': 'a404c68f68msh0b4f4d1ac118231p1ff281jsn93d59b2b3121',
+          'X-RapidAPI-Host': 'apartment-list.p.rapidapi.com'
         }
-    
+      };
+
+      try {
+        const response = await axios.request(options);
+        console.log(response.data.data[1].id);
+        // setpId(response.data.data[1].id);
+        // console.log(pId)
+        // listProperties();
+        for (let i = 0; i < 10; i++) {
+          const pId = response.data.data[i].id;
+          listProperties(pId);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+
     } catch (error) {
       console.error(error);
     }
   }
 
-const listProperties = async (propertyId) => {
-const options = {
+  const listProperties = async (propertyId) => {
+    const options = {
       method: 'GET',
       url: 'https://apartment-list.p.rapidapi.com/properties/' + propertyId,
       headers: {
@@ -103,7 +100,7 @@ const options = {
         'X-RapidAPI-Host': 'apartment-list.p.rapidapi.com'
       }
     };
-    
+
     try {
       const response = await axios.request(options);
       console.log(response.data);
@@ -111,30 +108,55 @@ const options = {
     } catch (error) {
       console.error(error);
     }
-}
+  }
 
   return (
-    <div class = "home-cards">
+    <div class="home-cards">
       {cardArray.map((card, index) => {
         return (
           <div id={index}>
             <Card style={{ width: '18rem' }}>
-            <Card.Img variant="top" src="holder.js/100px180" />
-            <Card.Body>
-              <Card.Title style={{color: 'white'}}>{card.title}</Card.Title>
-              <Card.Text>{card.text}</Card.Text>
-              <Button variant="primary">{card.buttonText}</Button>
-            </Card.Body>
-          </Card>
+              <Card.Img variant="top" src="holder.js/100px180" />
+              <Card.Body>
+                <Card.Title style={{ color: 'white' }}>{card.title}</Card.Title>
+                <Card.Text>{card.text}</Card.Text>
+                <Button variant="primary">{card.buttonText}</Button>
+              </Card.Body>
+            </Card>
           </div>
         )
       })}
 
 
-      {pictureArray}
-      <Picturegrid />
-      <button onClick={testResults}>test</button>
- {/* dc2ff9c76e5d40803aeafd2fed6fcb3dfe1c68a4 */}
+      <div className="container mt-5">
+        <div className="columns is-centered">
+          <div className="column is-half">
+            <div className="card has-background-info-35">
+              <div className="card-content">
+                <div className="content">
+                  <h1 className="title has-text-primary-100">Welcome to Quick Space</h1>
+                  <p className="has-text-text-90">This is a simple home page using React and Bulma.</p>
+                  <figure className="image is-4by3 mt-3">
+                    <img
+                      src={QuickSpaceLogo}
+                      alt="QuickSpace Logo"
+                      style={{ opacity: '0.5', borderRadius: '50px' }}
+                    />
+                  </figure>
+                  <div className="buttons mt-3">
+                    <button className="button is-warning is-rounded custom-button animate__animated animate__fadeInLeft">Button 1</button>
+                    <button className="button is-warning is-rounded custom-button animate__animated animate__fadeInUp">Button 2</button>
+                    <button className="button is-warning is-rounded custom-button animate__animated animate__fadeInRight">Button 3</button>
+                    <button className="button is-warning is-rounded custom-button animate__animated animate__fadeInDown">Button 4</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <Picturegrid />
+        <button onClick={testResults}>test</button>
+      </div>
     </div>
   );
 }
