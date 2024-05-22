@@ -12,21 +12,25 @@ import QuickSpaceLogo from '../../images/QuickSpace_logo2.jpg'; // Adjust the pa
 
 const cardArray = [
   {
+    imageSrc: "../../images/Group_Space.jpeg",
     title: "Group Space",
     text: "Find a space to accomodate your group. From baby showers to community meetings, find a space to host the perfect event!",
     buttonText: "See Group Spaces"
   },
   {
-    title: "Card Title",
-    text: "Some quick example text to build on the card title and make up the bulk of the card's content.",
+    imageSrc: "../../images/House_Space.jpeg",
+    title: "House Space",
+    text: "Find a space to accomodate you or a small group. The house space is a good option for an individual or group searching for last minute accomodation.",
     buttonText: "See House Spaces"
   },
   {
+    imageSrc:"../../images/studio_space2.jpeg",
     title: "Studio Space",
-    text: "Some quick example text to build on the card title and make up the bulk of the card's content.",
+    text: "Need a quite space to work on your music? Studio space can help you find the perfect sapce near you.",
     buttonText: "See House Spaces"
   },
   {
+    imageSrc:"../../images/study_space.jpeg",
     title: "Studio Space",
     text: "Some quick example text to build on the card title and make up the bulk of the card's content.",
     buttonText: "See House Spaces"
@@ -116,7 +120,7 @@ function Home() {
         return (
           <div id={index}>
             <Card style={{ width: '18rem' }}>
-              <Card.Img variant="top" src="holder.js/100px180" />
+              <Card.Img variant="top" src={card.imageSrc}/>
               <Card.Body>
                 <Card.Title style={{ color: 'white' }}>{card.title}</Card.Title>
                 <Card.Text>{card.text}</Card.Text>
