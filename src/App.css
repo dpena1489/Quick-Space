@@ -38,11 +38,15 @@
 .home-cards {
   display: flex;
   justify-content: space-evenly;
-  margin-top: 8%;
+  flex-wrap: wrap;
+  margin-inline: 8%;
   padding-bottom: 5%;
   color: whitesmoke;
 }
 
+.individual-card {
+  margin-block: 10px;
+}
 
 /* Adjust styles for buttons */
 .custom-button {

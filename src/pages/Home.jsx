@@ -12,25 +12,29 @@ import QuickSpaceLogo from '../../images/QuickSpace_logo2.jpg'; // Adjust the pa
 
 const cardArray = [
   {
+    id: "1",
     imageSrc: "../../images/Group_Space.jpeg",
     title: "Group Space",
     text: "Find a space to accomodate your group. From baby showers to community meetings, find a space to host the perfect event!",
     buttonText: "See Group Spaces"
   },
   {
+    id: "2",
     imageSrc: "../../images/House_Space.jpeg",
     title: "House Space",
     text: "Find a space to accomodate you or a small group. The house space is a good option for an individual or group searching for last minute accomodation.",
     buttonText: "See House Spaces"
   },
   {
-    imageSrc:"../../images/studio_space2.jpeg",
+    id: "3",
+    imageSrc: "../../images/studio_space2.jpeg",
     title: "Studio Space",
     text: "Need a quite space to work on your music? Studio space can help you find the perfect sapce near you.",
     buttonText: "See House Spaces"
   },
   {
-    imageSrc:"../../images/study_space.jpeg",
+    id: "4",
+    imageSrc: "../../images/study_space.jpeg",
     title: "Study Space",
     text: "Some quick example text to build on the card title and make up the bulk of the card's content.",
     buttonText: "See House Spaces"
@@ -116,14 +120,17 @@ function Home() {
 
   return (
     <div class="home-cards">
-      {cardArray.map((card, index) => {
+      {cardArray.map((card) => {
         return (
-          <div id={index}>
+          <div className="individual-card" key={card.id}>
             <Card style={{ width: '18rem' }}>
-              <Card.Img variant="top" src={card.imageSrc}/>
+              <Card.Img variant="top" src={card.imageSrc} style={{
+                minHeight: "250px",
+                maxHeight: "250px"
+              }} />
               <Card.Body>
                 <Card.Title style={{ color: 'white' }}>{card.title}</Card.Title>
-                <Card.Text>{card.text}</Card.Text>
+                <Card.Text style={{minHeight: "150px"}}>{card.text}</Card.Text>
                 <Button variant="primary">{card.buttonText}</Button>
               </Card.Body>
             </Card>
