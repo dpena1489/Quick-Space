@@ -31,85 +31,85 @@ const cardArray = [
 ]
 
 import { useState } from 'react';
-import QuickSpaceLogo from '../../images/QuickSpace_logo2.jpg'; // Adjust the path according to your folder structure
+import QuickSpaceLogo from '../assets/images/QuickSpace_logo1.png'; // Adjust the path according to your folder structure
 import axios from 'axios';
 import Picturegrid from '../components/Picturegrid';
 
 function Home() {
   const [pId, setpId] = useState()
   console.log(pId)
-  const testResults = async () => {
-    //first API call GETs location number
-    const locationOptions = {
-      method: 'GET',
-      url: 'https://apartment-list.p.rapidapi.com/locations',
-      params: {location: 'Texas'},
-      headers: {
-        'X-RapidAPI-Key': 'a404c68f68msh0b4f4d1ac118231p1ff281jsn93d59b2b3121',
-        'X-RapidAPI-Host': 'apartment-list.p.rapidapi.com'
-      }
-    };
+  // // const testResults = async () => {
+  // //   //first API call GETs location number
+  // //   const locationOptions = {
+  // //     method: 'GET',
+  // //     url: 'https://apartment-list.p.rapidapi.com/locations',
+  // //     params: {location: 'Texas'},
+  // //     headers: {
+  // //       'X-RapidAPI-Key': 'a404c68f68msh0b4f4d1ac118231p1ff281jsn93d59b2b3121',
+  // //       'X-RapidAPI-Host': 'apartment-list.p.rapidapi.com'
+  // //     }
+  // //   };
     
-    try {
-      const response = await axios.request(locationOptions);
-      console.log(response.data.data);
-      const locationArray = response.data.data;
-      const locationKey = locationArray[0].key;
+  //   try {
+  //     const response = await axios.request(locationOptions);
+  //     console.log(response.data.data);
+  //     const locationArray = response.data.data;
+  //     const locationKey = locationArray[0].key;
       
-      //second API call GETs properties
-      // locationArray.forEach(async (location) => {
-      //   console.log(location)
-        const options = {
-          method: 'GET',
-          url: 'https://apartment-list.p.rapidapi.com/properties',
-          params: {
-            locationKey: locationKey,
-            maxPrice: '2000',
-            minPrice: '1800'
-          },
-          headers: {
-            'X-RapidAPI-Key': 'a404c68f68msh0b4f4d1ac118231p1ff281jsn93d59b2b3121',
-            'X-RapidAPI-Host': 'apartment-list.p.rapidapi.com'
-          }
-        };
+  //     //second API call GETs properties
+  //     // locationArray.forEach(async (location) => {
+  //     //   console.log(location)
+  //       // const options = {
+  //       //   method: 'GET',
+  //       //   url: 'https://apartment-list.p.rapidapi.com/properties',
+  //       //   params: {
+  //       //     locationKey: locationKey,
+  //       //     maxPrice: '2000',
+  //       //     minPrice: '1800'
+  //       //   },
+  //       //   headers: {
+  //       //     'X-RapidAPI-Key': 'a404c68f68msh0b4f4d1ac118231p1ff281jsn93d59b2b3121',
+  //       //     'X-RapidAPI-Host': 'apartment-list.p.rapidapi.com'
+  //       //   }
+  //       // };
         
-        try {
-          const response = await axios.request(options);
-          console.log(response.data.data[1].id);
-          // setpId(response.data.data[1].id);
-          // console.log(pId)
-          // listProperties();
-          for(let i = 0; i < 10; i++) {
-            const pId = response.data.data[i].id;
-            listProperties(pId);
-          }
-        } catch (error) {
-          console.error(error);
-        }
+  //       try {
+  //         // const response = await axios.request(options);
+  //         // console.log(response.data.data[1].id);
+  //         // setpId(response.data.data[1].id);
+  //         // console.log(pId)
+  //         // listProperties();
+  //         for(let i = 0; i < 10; i++) {
+  //           const pId = response.data.data[i].id;
+  //           listProperties(pId);
+  //         }
+  //       } catch (error) {
+  //         console.error(error);
+  //       }
     
-    } catch (error) {
-      console.error(error);
-    }
-  }
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // }
 
-const listProperties = async (propertyId) => {
-const options = {
-      method: 'GET',
-      url: 'https://apartment-list.p.rapidapi.com/properties/' + propertyId,
-      headers: {
-        'X-RapidAPI-Key': 'a404c68f68msh0b4f4d1ac118231p1ff281jsn93d59b2b3121',
-        'X-RapidAPI-Host': 'apartment-list.p.rapidapi.com'
-      }
-    };
+// const listProperties = async (propertyId) => {
+// const options = {
+//       method: 'GET',
+//       url: 'https://apartment-list.p.rapidapi.com/properties/' + propertyId,
+//       headers: {
+//         'X-RapidAPI-Key': 'a404c68f68msh0b4f4d1ac118231p1ff281jsn93d59b2b3121',
+//         'X-RapidAPI-Host': 'apartment-list.p.rapidapi.com'
+//       }
+//     };
     
-    try {
-      const response = await axios.request(options);
-      console.log(response.data);
-      // const pId = response.data.data.id;
-    } catch (error) {
-      console.error(error);
-    }
-}
+//     try {
+//       const response = await axios.request(options);
+//       console.log(response.data);
+//       // const pId = response.data.data.id;
+//     } catch (error) {
+//       console.error(error);
+//     }
+// }
 
   return (
     <div className="container mt-5">
@@ -138,9 +138,13 @@ const options = {
           </div>
         </div>
       </div>
-      {pictureArray}
+   {cardArray.map((card, i)=> (
+  
+    <p key={i}>{card.title}</p>
+  
+   ))}
       <Picturegrid />
-      <button onClick={testResults}>test</button>
+      {/* <button onClick={testResults}>test</button> */}
     </div>
   );
 }
