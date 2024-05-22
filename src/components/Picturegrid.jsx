@@ -1,7 +1,7 @@
 const Picturegrid = () => {
     return (
-        <img src={}></img>
-        
+        <p>remove this</p>
+        // <img src={}></img>
     )
 } 
 export default Picturegrid

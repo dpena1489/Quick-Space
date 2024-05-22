@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import '../App.css';
 
 function Header(){
-    return(
+    return (
         <div>
             <header className='header'>
             <figure id='logo' >
