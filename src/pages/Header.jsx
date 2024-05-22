@@ -1,6 +1,6 @@
 import React from 'react';
-import QuickSpaceLogo from '../../images/QuickSpace_logo2.jpg';
-import CheckoutForm from '../pages/CheckoutForm'; // imports the CheckoutForm component
+import logo from '../../images/QuickSpace_logo2.jpg'
+import CheckoutForm from '../pages/CheckoutForm';
 import { Link } from 'react-router-dom';
 import '../App.css';
 
@@ -10,7 +10,7 @@ function Header() {
             <header className='header'>
                 <figure id='logo'>
                     <img
-                        src={QuickSpaceLogo}
+                        src={logo}
                         alt="QuickSpace Logo"
                         style={{ opacity: '0.5', borderRadius: '50px' }}
                     />

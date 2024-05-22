@@ -2,6 +2,13 @@ import React from 'react'
 import email_icon from '../../assets/email.png'
 import './LoginSignup.css'
 
+<<<<<<< HEAD
+=======
+ import user_icon from '../../assets/user.png'
+import email_icon from '../../assets/email.png'
+ import password_icon from '../../assets/password.png'
+
+>>>>>>> main
 export const LoginSignup = () => {
     return (
         <div className='container'>

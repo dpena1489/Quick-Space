@@ -3,11 +3,8 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { useState } from 'react';
 import axios from 'axios';
-import Picturegrid from '../components/Picturegrid';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../App.css'
-import QuickSpaceLogo from '../../images/QuickSpace_logo2.jpg'; // Adjust the path according to your folder structure
-
 // Comment I want to push to save upstream
 
 const cardArray = [
