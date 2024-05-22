@@ -1,7 +1,10 @@
 /* Define a class for the space grey */
 * {
-  background-color: #33383D; /* Space Grey color */
-  color: white; /* Text color */
+  background-color: #33383D;
+  /* Space Grey color */
+  
+  color: white;
+  /* Text color */
 }
 
 #logo {
@@ -11,34 +14,39 @@
   margin-left: 5px;
 }
 
-.header{
+.header {
   display: flex;
   justify-content: space-between;
   border-bottom: solid blue 3px;
 }
 
 .header-list {
-  font-size: x-large;
   list-style: none;
   display: flex;
   padding-right: 30px;
   margin-top: 20px;
-  font-weight: bold;
   padding-bottom: 2%;
 }
 
-.header-li{
+.header-li {
+  color: white;
+  font-weight: bold;
+  font-size: x-large;
   margin-right: 40px;
 }
 
 .home-cards {
   display: flex;
   justify-content: space-evenly;
-  margin-top: 8%;
+  flex-wrap: wrap;
+  margin-inline: 8%;
   padding-bottom: 5%;
   color: whitesmoke;
 }
 
+.individual-card {
+  margin-block: 10px;
+}
 
 /* Adjust styles for buttons */
 .custom-button {
@@ -52,6 +60,7 @@
     opacity: 0;
     transform: translateX(-10px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
@@ -63,6 +72,7 @@
     opacity: 0;
     transform: translateY(10px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -74,6 +84,7 @@
     opacity: 0;
     transform: translateX(10px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
@@ -85,6 +96,7 @@
     opacity: 0;
     transform: translateY(-10px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
