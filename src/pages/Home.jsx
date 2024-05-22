@@ -31,7 +31,7 @@ const cardArray = [
   },
   {
     imageSrc:"../../images/study_space.jpeg",
-    title: "Studio Space",
+    title: "Study Space",
     text: "Some quick example text to build on the card title and make up the bulk of the card's content.",
     buttonText: "See House Spaces"
   }
