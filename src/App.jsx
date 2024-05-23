@@ -8,7 +8,7 @@ function App() {
   return (
     <div>
       <Header />
-      {/* <Outlet /> */}
+      <Outlet />
       {/* <CheckoutForm></CheckoutForm> */}
       <Footer></Footer>
       {/* <LoginSignup /> */}

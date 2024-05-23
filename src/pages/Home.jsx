@@ -5,6 +5,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../App.css'
+import { Link, useLocation } from 'react-router-dom';
 // Comment I want to push to save upstream
 
 const cardArray = [
@@ -13,28 +14,32 @@ const cardArray = [
     imageSrc: "../../images/Group_Space.jpeg",
     title: "Group Space",
     text: "Find a space to accomodate your group. From baby showers to community meetings, find a space to host the perfect event!",
-    buttonText: "See Group Spaces"
+    buttonText: "See Group Spaces",
+    link: "/GroupSpace"
   },
   {
     id: "2",
     imageSrc: "../../images/House_Space.jpeg",
     title: "House Space",
     text: "Find a space to accomodate you or a small group. The house space is a good option for an individual or group searching for last minute accomodation.",
-    buttonText: "See House Spaces"
+    buttonText: "See House Spaces",
+    link: "/HouseSpace"
   },
   {
     id: "3",
     imageSrc: "../../images/studio_space2.jpeg",
     title: "Studio Space",
     text: "Need a quite space to work on your music? Studio space can help you find the perfect sapce near you.",
-    buttonText: "See Studio Spaces"
+    buttonText: "See Studio Spaces",
+    link: "/StudioSpace"
   },
   {
     id: "4",
     imageSrc: "../../images/study_space.jpeg",
     title: "Study Space",
     text: "Some quick example text to build on the card title and make up the bulk of the card's content.",
-    buttonText: "See Study Spaces"
+    buttonText: "See Study Spaces",
+    link: "/StudySpace"
   }
 ]
 
@@ -128,7 +133,7 @@ function Home() {
               <Card.Body>
                 <Card.Title style={{ color: 'white' }}>{card.title}</Card.Title>
                 <Card.Text style={{minHeight: "150px"}}>{card.text}</Card.Text>
-                <Button variant="primary">{card.buttonText}</Button>
+                <Link to={card.link}><Button variant="primary">{card.buttonText}</Button> </Link>
               </Card.Body>
             </Card>
           </div>

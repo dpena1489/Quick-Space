@@ -8,17 +8,18 @@ function Header() {
     return (
         <div>
             <header className='header'>
-                <figure id='logo'>
-                    <img
-                        src={logo}
-                        alt="QuickSpace Logo"
-                        style={{ opacity: '0.5', borderRadius: '50px' }}
-                    />
-                </figure>
+                <Link to='/'>
+                    <figure id='logo'>
+                        <img
+                            src={logo}
+                            alt="QuickSpace Logo"
+                            style={{ opacity: '0.5', borderRadius: '50px' }}
+                        />
+                    </figure>
+                </Link>
 
                 <ul className='header-list'>
                     <li className='header-li'>Profile</li>
-                    <li className='header-li'>Search</li>
                     {/* passing the header-li css to this list item didnt do anything so I placed it on the button in the component. */}
                     <li><CheckoutForm /></li>
                     <li><Link to="/cart" className='header-li'>Cart</Link></li>
