@@ -17,7 +17,7 @@
 .header {
   display: flex;
   justify-content: space-between;
-  border-bottom: solid blue 3px;
+  border-bottom: solid #46a2da 3px;
 }
 
 .header-list {
