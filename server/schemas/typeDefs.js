@@ -17,7 +17,7 @@ const typeDefs = `
   type Booking {
     _id: ID
     purchaseDate: String
-    products: [Product]
+    listing: [Listing]
   }
 
   type User {
@@ -52,7 +52,7 @@ const typeDefs = `
     listing(_id: ID!): Listing
     user: User
     booking(_id: ID!): Booking
-    checkout(products: [ProductInput]): Checkout
+    checkout(products: [BookingInput]): Checkout
   }
 
   type Mutation {
