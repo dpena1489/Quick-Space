@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 const bcrypt = require('bcrypt');
-const Order = require('./Order');
+const Order = require('./Booking');
 
 const userSchema = new Schema({
   firstName: {
@@ -15,15 +15,22 @@ const userSchema = new Schema({
     required: true,
     trim: true
   },
+  username: {
+    type: String,
+    required: true,
+    unique: true,
+    trim: true
+  },
   email: {
     type: String,
     required: true,
-    unique: true
+    unique: true,
+    trim: true
   },
   password: {
     type: String,
     required: true,
-    minlength: 5
+    minlength: 8
   },
   orders: [Order.schema]
 });
