@@ -5,14 +5,16 @@ import { useState } from 'react';
 // import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../App.css'
+import { Link} from 'react-router-dom';
 
 const cardArray = [
     {
       id: "1",
-      imageSrc: "",
+      imageSrc: "../../images/aptlisting.jpeg",
       price: "$40 p/hr",
       text: "A charming studio apartment on Chicago's lakefront.",
-      buttonText: "See Details"
+      buttonText: "See Details",
+      link: "/Details"
     },
 ]
 function HouseSpace() {
@@ -29,7 +31,7 @@ function HouseSpace() {
                   <Card.Body>
                     <Card.Title style={{ color: 'white' }}>{card.price}</Card.Title>
                     <Card.Text style={{minHeight: "150px"}}>{card.text}</Card.Text>
-                    <Button variant="primary">{card.buttonText}</Button>
+                   <Link to={card.link}><Button variant="primary">{card.buttonText}</Button></Link> 
                   </Card.Body>
                 </Card>
               </div>

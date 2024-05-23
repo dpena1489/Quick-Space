@@ -1,6 +1,5 @@
 import React from 'react';
 import logo from '../../images/logo2.jpg'
-import CheckoutForm from './CheckoutForm';
 import { Link } from 'react-router-dom';
 import '../App.css';
 
@@ -21,7 +20,6 @@ function Header() {
                 <ul className='header-list'>
                     <li className='header-li'>Profile</li>
                     {/* passing the header-li css to this list item didnt do anything so I placed it on the button in the component. */}
-                    <li><CheckoutForm /></li>
                     <li><Link to="/cart" className='header-li'>Cart</Link></li>
                 </ul>
             </header>
