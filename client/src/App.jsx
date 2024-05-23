@@ -9,9 +9,9 @@ function App() {
     <div>
       <Header />
       <Outlet />
-      {/* <CheckoutForm></CheckoutForm> */}
+    
       <Footer></Footer>
-      {/* <LoginSignup /> */}
+
     </div>
   );
 

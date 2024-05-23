@@ -1,8 +1,6 @@
-const mongoose = require('mongoose');
+const { Schema, model } = require('mongoose');
 
-const { Schema } = mongoose;
 const bcrypt = require('bcrypt');
-const Order = require('./Order');
 
 const userSchema = new Schema({
   firstName: {
@@ -15,17 +13,29 @@ const userSchema = new Schema({
     required: true,
     trim: true
   },
+  username: {
+    type: String,
+    required: true,
+    unique: true,
+    trim: true
+  },
   email: {
     type: String,
     required: true,
-    unique: true
+    unique: true,
+    trim: true
   },
   password: {
     type: String,
     required: true,
-    minlength: 5
+    minlength: 8
   },
-  orders: [Order.schema]
+  bookings: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Booking'
+    }
+  ]
 });
 
 // set up pre-save middleware to create password
@@ -43,6 +53,6 @@ userSchema.methods.isCorrectPassword = async function(password) {
   return await bcrypt.compare(password, this.password);
 };
 
-const User = mongoose.model('User', userSchema);
+const User = model('User', userSchema);
 
 module.exports = User;

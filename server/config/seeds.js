@@ -1,134 +1,184 @@
 const db = require('./connection');
-const { User, Product, Category } = require('../models');
+const { User, Listing, Category } = require('../models');
 const cleanDB = require('./cleanDB');
 
 db.once('open', async () => {
   await cleanDB('Category', 'categories');
-  await cleanDB('Product', 'products');
+  await cleanDB('Listing', 'listings');
   await cleanDB('User', 'users');
 
   const categories = await Category.insertMany([
-    { name: 'Food' },
-    { name: 'Household Supplies' },
-    { name: 'Electronics' },
-    { name: 'Books' },
-    { name: 'Toys' }
+    { name: 'Group Space' },
+    { name: 'House Space' },
+    { name: 'Studio Space' },
+    { name: 'Study Space' }
   ]);
 
-  console.log('categories seeded');
+  console.log('Categories seeded');
 
-  const products = await Product.insertMany([
+  const listings = await Listing.insertMany([
+    //the following five listings are part of the 'Group Space' category.
     {
-      name: 'Tin of Cookies',
-      description:
-        'Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.',
-      image: 'cookie-tin.jpg',
-      category: categories[0]._id,
-      price: 2.99,
-      quantity: 500
+      title: 'Spacious Meeting Room',
+      owner: 'John Doe',
+      address: '123 Main Street',
+      description: 'A large meeting room suitable for group discussions and presentations.',
+      images: ['', '', ''],
+      pricePerHour: 50.00,
+      availability: true,
+      rating: 4.5,
+      capacity: 20,
+      rules: 'No smoking or pets allowed. Please clean up after yourselves.',
+      amenities: ['Projector', 'Whiteboard', 'WiFi'],
+      category: categories.find(category => category.name === 'Group Space')._id
     },
     {
-      name: 'Canned Coffee',
-      description:
-        'Praesent sed lacinia mauris. Nulla congue nibh magna, at feugiat nunc scelerisque quis. Donec iaculis rutrum vulputate. Suspendisse lectus sem, vulputate ac lectus sed, placerat consequat dui.',
-      image: 'canned-coffee.jpg',
-      category: categories[0]._id,
-      price: 1.99,
-      quantity: 500
+      title: 'Modern Conference Hall',
+      owner: 'Alice Johnson',
+      address: '789 Elm Street',
+      description: 'A modern conference hall with state-of-the-art facilities.',
+      images: ['', '', ''],
+      pricePerHour: 80.00,
+      availability: true,
+      rating: 4.9,
+      capacity: 50,
+      rules: 'No food or drinks allowed inside the hall. Smoking strictly prohibited.',
+      amenities: ['Audio System', 'Projector', 'Stage'],
+      category: categories.find(category => category.name === 'Group Space')._id
     },
     {
-      name: 'Toilet Paper',
-      category: categories[1]._id,
-      description:
-        'Donec volutpat erat erat, sit amet gravida justo sodales in. Phasellus tempus euismod urna. Proin ultrices nisi ut ipsum congue, vitae porttitor libero suscipit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam lacinia a nisi non congue.',
-      image: 'toilet-paper.jpg',
-      price: 7.99,
-      quantity: 20
+      title: 'Rooftop Terrace',
+      owner: 'Michael Anderson',
+      address: '321 Pine Street',
+      description: 'A spacious rooftop terrace with panoramic views of the city skyline.',
+      images: ['', '', ''],
+      pricePerHour: 100.00,
+      availability: true,
+      rating: 4.7,
+      capacity: 30,
+      rules: 'No outside food or drinks allowed. Keep noise levels to a minimum after 10 PM.',
+      amenities: ['Outdoor Seating', 'Barbecue Grill', 'City Views'],
+      category: categories.find(category => category.name === 'Group Space')._id
     },
     {
-      name: 'Handmade Soap',
-      category: categories[1]._id,
-      description:
-        'Praesent placerat, odio vel euismod venenatis, lectus arcu laoreet felis, et fringilla sapien turpis vestibulum nisl.',
-      image: 'soap.jpg',
-      price: 3.99,
-      quantity: 50
+      title: 'Community Center',
+      owner: 'Emily Wilson',
+      address: '567 Maple Avenue',
+      description: 'A community center equipped with meeting rooms, a gymnasium, and a kitchen.',
+      images: ['', '', ''],
+      pricePerHour: 80.00,
+      availability: true,
+      rating: 4.6,
+      capacity: 100,
+      rules: 'Respect other users of the facility. Clean up after use.',
+      amenities: ['Meeting Rooms', 'Gymnasium', 'Kitchen'],
+      category: categories.find(category => category.name === 'Group Space')._id
     },
     {
-      name: 'Set of Wooden Spoons',
-      category: categories[1]._id,
-      description:
-        'Vivamus ut turpis in purus pretium mollis. Donec turpis odio, semper vel interdum ut, vulputate at ex. Duis dignissim nisi vel tortor imperdiet finibus. Aenean aliquam sagittis rutrum.',
-      image: 'wooden-spoons.jpg',
-      price: 14.99,
-      quantity: 100
+      title: 'Art Gallery',
+      owner: 'Sophia Martinez',
+      address: '890 Oakwood Drive',
+      description: 'An art gallery space suitable for exhibitions, workshops, and events.',
+      images: ['', '', ''],
+      pricePerHour: 120.00,
+      availability: true,
+      rating: 4.9,
+      capacity: 50,
+      rules: 'No touching the artworks. Keep noise levels low during exhibitions.',
+      amenities: ['Display Walls', 'Lighting Equipment', 'Seating Area'],
+      category: categories.find(category => category.name === 'Group Space')._id
+    },
+    //the following 5 listings are listing objects for the 'Home Space' category.
+    {
+      title: 'Modern Loft Apartment',
+      owner: 'Jessica Brown',
+      address: '123 Elm Street',
+      description: 'A stylish loft apartment with modern amenities and city views.',
+      images: ['', '', ''],
+      pricePerHour: 50.00,
+      availability: true,
+      rating: 4.8,
+      capacity: 4,
+      rules: 'No smoking indoors. Pets allowed with prior approval.',
+      amenities: ['Fully Equipped Kitchen', 'Balcony', 'City Views'],
+      category: categories.find(category => category.name === 'Home Space')._id
     },
     {
-      name: 'Camera',
-      category: categories[2]._id,
-      description:
-        'Vestibulum risus metus, luctus non tortor quis, tincidunt consectetur ex. Nullam vitae lobortis ligula, ut sagittis massa. Curabitur consectetur, tellus at pulvinar venenatis, erat augue cursus erat, eu ullamcorper eros lectus ultrices ipsum. Integer rutrum, augue vitae auctor venenatis, turpis turpis elementum orci, at sagittis risus mi a leo.',
-      image: 'camera.jpg',
-      price: 399.99,
-      quantity: 30
+      title: 'Cosy Cabin Retreat',
+      owner: 'Daniel White',
+      address: '456 Oak Street',
+      description: 'A cosy cabin retreat nestled in the woods, perfect for a weekend getaway.',
+      images: ['', '', ''],
+      pricePerHour: 70.00,
+      availability: true,
+      rating: 4.7,
+      capacity: 2,
+      rules: 'No parties or loud noises. Respect the natural surroundings.',
+      amenities: ['Fireplace', 'Outdoor Seating', 'Nature Trails'],
+      category: categories.find(category => category.name === 'Home Space')._id
     },
     {
-      name: 'Tablet',
-      category: categories[2]._id,
-      description:
-        'In sodales, ipsum quis ultricies porttitor, tellus urna aliquam arcu, eget venenatis purus ligula ut nisi. Fusce ut felis dolor. Mauris justo ante, aliquet non tempus in, tempus ac lorem. Aliquam lacinia dolor eu sem eleifend ultrices. Etiam mattis metus metus. Sed ligula dui, placerat non turpis vitae, suscipit volutpat elit. Phasellus sagittis, diam elementum suscipit fringilla, libero mauris scelerisque ex, ac interdum diam erat non sapien.',
-      image: 'tablet.jpg',
-      price: 199.99,
-      quantity: 30
+      title: 'Luxury Beach House',
+      owner: 'Olivia Taylor',
+      address: '789 Ocean Avenue',
+      description: 'A luxurious beach house with direct access to the beach and stunning ocean views.',
+      images: ['', '', ''],
+      pricePerHour: 100.00,
+      availability: true,
+      rating: 4.9,
+      capacity: 6,
+      rules: 'No smoking or pets indoors. Keep noise levels low at night.',
+      amenities: ['Private Beach Access', 'Hot Tub', 'Sun Deck'],
+      category: categories.find(category => category.name === 'Home Space')._id
     },
     {
-      name: 'Tales at Bedtime',
-      category: categories[3]._id,
-      description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ornare diam quis eleifend rutrum. Aliquam nulla est, volutpat non enim nec, pharetra gravida augue. Donec vitae dictum neque. Pellentesque arcu lorem, fringilla non ligula ac, tristique bibendum erat. Ut a semper nibh. Quisque a mi et mi tempor ultricies. Maecenas eu ipsum eu enim hendrerit accumsan at euismod urna.',
-      image: 'bedtime-book.jpg',
-      price: 9.99,
-      quantity: 100
+      title: 'Charming Cottage',
+      owner: 'Sophie Johnson',
+      address: '101 Forest Lane',
+      description: 'A charming cottage with a rustic feel, surrounded by beautiful gardens.',
+      images: ['', '', ''],
+      pricePerHour: 80.00,
+      availability: true,
+      rating: 4.6,
+      capacity: 4,
+      rules: 'No smoking indoors. Pets allowed in designated areas only.',
+      amenities: ['Garden', 'Fire Pit', 'Porch Swing'],
+      category: categories.find(category => category.name === 'Home Space')._id
     },
     {
-      name: 'Spinning Top',
-      category: categories[4]._id,
-      description: 'Ut vulputate hendrerit nibh, a placerat elit cursus interdum.',
-      image: 'spinning-top.jpg',
-      price: 1.99,
-      quantity: 1000
+      title: 'Scenic Mountain Cabin',
+      owner: 'Noah Garcia',
+      address: '234 Summit Road',
+      description: 'A cozy mountain cabin nestled in the heart of the wilderness, offering breathtaking views.',
+      images: ['', '', ''],
+      pricePerHour: 90.00,
+      availability: true,
+      rating: 4.8,
+      capacity: 3,
+      rules: 'No parties or loud noises. Respect the natural environment.',
+      amenities: ['Mountain Views', 'Deck', 'Hiking Trails'],
+      category: categories.find(category => category.name === 'Home Space')._id
     },
+    //the follwoing 5 listings are listing objects for the 'Studio Space' category
     {
-      name: 'Set of Plastic Horses',
-      category: categories[4]._id,
-      description:
-        'Sed a mauris condimentum, elementum enim in, rhoncus dui. Phasellus lobortis leo odio, sit amet pharetra turpis porta quis.',
-      image: 'plastic-horses.jpg',
-      price: 2.99,
-      quantity: 1000
+      title: 'Cozy Home Studio',
+      owner: 'Jane Smith',
+      address: '456 Oak Avenue',
+      description: 'A cozy studio apartment perfect for solo travelers or couples.',
+      image: ['', '', ''],
+      pricePerHour: 30.00,
+      availability: true,
+      rating: 4.8,
+      capacity: 2,
+      rules: 'No parties or loud noises after 10 PM. Keep the space clean.',
+      amenities: ['Kitchenette', 'Private Bathroom', 'WiFi'],
+      category: categories.find(category => category.name === 'Studio Space')._id
     },
-    {
-      name: 'Teddy Bear',
-      category: categories[4]._id,
-      description:
-        'Vestibulum et erat finibus erat suscipit vulputate sed vitae dui. Ut laoreet tellus sit amet justo bibendum ultrices. Donec vitae felis vestibulum, congue augue eu, finibus turpis.',
-      image: 'teddy-bear.jpg',
-      price: 7.99,
-      quantity: 100
-    },
-    {
-      name: 'Alphabet Blocks',
-      category: categories[4]._id,
-      description:
-        'Morbi consectetur viverra urna, eu fringilla turpis faucibus sit amet. Suspendisse potenti. Donec at dui ac sapien eleifend hendrerit vel sit amet lectus.',
-      image: 'alphabet-blocks.jpg',
-      price: 9.99,
-      quantity: 600
-    }
   ]);
 
-  console.log('products seeded');
+  console.log('Listings seeded');
 
+  //user needs to be updated.
   await User.create({
     firstName: 'Pamela',
     lastName: 'Washington',
