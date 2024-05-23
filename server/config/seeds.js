@@ -1,23 +1,21 @@
 const db = require('./connection');
-const { User, Product, Category } = require('../models');
+const { User, Listing, Category } = require('../models');
 const cleanDB = require('./cleanDB');
 
 db.once('open', async () => {
   await cleanDB('Category', 'categories');
-  await cleanDB('Product', 'products');
+  await cleanDB('Listing', 'listings');
   await cleanDB('User', 'users');
 
   const categories = await Category.insertMany([
-    { name: 'Food' },
-    { name: 'Household Supplies' },
-    { name: 'Electronics' },
-    { name: 'Books' },
-    { name: 'Toys' }
+    { name: 'Group Space' },
+    { name: 'House Space' },
+    { name: 'Studio Space' },
+    { name: 'Study Space' }
   ]);
 
-  console.log('categories seeded');
-
-  const products = await Product.insertMany([
+  console.log('Categories seeded');
+  const listings = await Listing.insertMany([
     {
       name: 'Tin of Cookies',
       description:

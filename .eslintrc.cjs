@@ -3,7 +3,8 @@ module.exports = {
   env: {
     browser: true,
     es2020: true,
-    node: true // Added 'node' environment
+    node: true, // Added 'node' environment
+    mongoose: true // Added 'mongoose' environment
   },
   extends: [
     'eslint:recommended',
