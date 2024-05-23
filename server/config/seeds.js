@@ -32,6 +32,21 @@ db.once('open', async () => {
       category: categories.find(category => category.name === 'Group Space')._id
     },
     {
+      title: 'Modern Conference Hall',
+      owner: 'Alice Johnson',
+      address: '789 Elm Street',
+      description: 'A modern conference hall with state-of-the-art facilities.',
+      images: ['conference-hall-1.jpg', 'conference-hall-2.jpg', 'conference-hall-3.jpg'],
+      pricePerHour: 80.00,
+      availability: true,
+      rating: 4.9,
+      capacity: 50,
+      rules: 'No food or drinks allowed inside the hall. Smoking strictly prohibited.',
+      amenities: ['Audio System', 'Projector', 'Stage'],
+      category: categories.find(category => category.name === 'Group Space')._id
+    },
+    
+    {
       title: 'Cozy Home Studio',
       owner: 'Jane Smith',
       address: '456 Oak Avenue',
@@ -45,15 +60,6 @@ db.once('open', async () => {
       amenities: ['Kitchenette', 'Private Bathroom', 'WiFi'],
       category: categories.find(category => category.name === 'Studio Space')._id
     },
-    {
-      name: 'Alphabet Blocks',
-      category: categories[4]._id,
-      description:
-        'Morbi consectetur viverra urna, eu fringilla turpis faucibus sit amet. Suspendisse potenti. Donec at dui ac sapien eleifend hendrerit vel sit amet lectus.',
-      image: 'alphabet-blocks.jpg',
-      price: 9.99,
-      quantity: 600
-    }
   ]);
 
   console.log('Listings seeded');
