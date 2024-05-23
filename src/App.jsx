@@ -1,3 +1,4 @@
+import CheckoutForm from './pages/CheckoutForm';
 import Footer from './pages/Footer';
 import Header from './pages/Header';
 import { Outlet } from 'react-router-dom';
@@ -7,7 +8,8 @@ function App() {
   return (
     <div>
       <Header />
-      <Outlet />
+      {/* <Outlet /> */}
+      {/* <CheckoutForm></CheckoutForm> */}
       <Footer></Footer>
       {/* <LoginSignup /> */}
     </div>
