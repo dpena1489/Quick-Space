@@ -10,8 +10,8 @@ const cardArray = [
     {
       id: "1",
       imageSrc: "",
-      price: "",
-      text: "",
+      price: "$40 p/hr",
+      text: "A charming studio apartment on Chicago's lakefront.",
       buttonText: "See Details"
     },
 ]
