@@ -8,10 +8,10 @@ function App() {
   return (
     <div>
       <Header />
-      {/* <Outlet /> */}
-      {/* <CheckoutForm></CheckoutForm> */}
+      <Outlet />
+    
       <Footer></Footer>
-      {/* <LoginSignup /> */}
+
     </div>
   );
 

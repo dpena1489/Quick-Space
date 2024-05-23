@@ -24,6 +24,7 @@ const bookingSchema = new Schema({
     type: Number,
     required: true
   }
+  // isPaid? boolean
 });
 
 const Booking = mongoose.model('Booking', bookingSchema);

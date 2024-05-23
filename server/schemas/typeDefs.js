@@ -4,7 +4,7 @@ const typeDefs = `
     name: String
   }
 
-  type Product {
+  type Listing {
     _id: ID
     name: String
     description: String
@@ -14,7 +14,7 @@ const typeDefs = `
     category: Category
   }
 
-  type Order {
+  type Booking {
     _id: ID
     purchaseDate: String
     products: [Product]
@@ -25,7 +25,7 @@ const typeDefs = `
     firstName: String
     lastName: String
     email: String
-    orders: [Order]
+    bookings: [Booking]
   }
 
   type Checkout {
@@ -37,7 +37,7 @@ const typeDefs = `
     user: User
   }
 
-  input ProductInput {
+  input BookingInput {
     _id: ID
     purchaseQuantity: Int
     name: String
@@ -48,19 +48,17 @@ const typeDefs = `
 
   type Query {
     categories: [Category]
-    products(category: ID, name: String): [Product]
-    product(_id: ID!): Product
+    listings(category: ID, name: String): [Listing]
+    listing(_id: ID!): Listing
     user: User
-    order(_id: ID!): Order
+    booking(_id: ID!): Booking
     checkout(products: [ProductInput]): Checkout
   }
 
   type Mutation {
     addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
-    addOrder(products: [ID]!): Order
-    updateUser(firstName: String, lastName: String, email: String, password: String): User
-    updateProduct(_id: ID!, quantity: Int!): Product
     login(email: String!, password: String!): Auth
+    addBooking(listing: ID!): Booking
   }
 `;
 

@@ -1,6 +1,6 @@
 import React from 'react';
-import logo from '../../images/QuickSpace_logo2.jpg'
-import CheckoutForm from '../pages/CheckoutForm';
+import logo from '../assets/images/logo2.jpg'
+import CheckoutForm from './CheckoutForm';
 import { Link } from 'react-router-dom';
 import '../App.css';
 

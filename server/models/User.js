@@ -2,7 +2,6 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 const bcrypt = require('bcrypt');
-const Order = require('./Booking');
 
 const userSchema = new Schema({
   firstName: {
@@ -32,7 +31,12 @@ const userSchema = new Schema({
     required: true,
     minlength: 8
   },
-  orders: [Order.schema]
+  bookings: [
+    {
+      type: Schema.types.ObjectId,
+      ref: 'Booking'
+    }
+  ]
 });
 
 // set up pre-save middleware to create password

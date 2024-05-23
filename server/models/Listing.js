@@ -38,12 +38,12 @@ const listingSchema = new Schema({
     min: 0,
     max: 5
   },
-  reviews: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: 'Review'
-    }
-  ],
+  // reviews: [
+  //   {
+  //     type: Schema.Types.ObjectId,
+  //     ref: 'Review'
+  //   }
+  // ],
   capacity: {
     type: Number,
     min: 1,
