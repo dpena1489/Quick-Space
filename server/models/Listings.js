@@ -2,8 +2,13 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
-const productSchema = new Schema({
-  name: {
+const listingSchema = new Schema({
+  title: {
+    type: String,
+    required: true,
+    trim: true
+  },
+  owner: {
     type: String,
     required: true,
     trim: true
