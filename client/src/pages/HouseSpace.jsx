@@ -6,6 +6,15 @@ import { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../App.css'
 
+const cardArray = [
+    {
+      id: "1",
+      imageSrc: "",
+      price: "$40 p/hr",
+      text: "A charming studio apartment on Chicago's lakefront.",
+      buttonText: "See Details"
+    },
+]
 function HouseSpace() {
     return (
         <div class="home-cards">
@@ -18,7 +27,7 @@ function HouseSpace() {
                     maxHeight: "250px"
                   }} />
                   <Card.Body>
-                    <Card.Title style={{ color: 'white' }}>{card.title}</Card.Title>
+                    <Card.Title style={{ color: 'white' }}>{card.price}</Card.Title>
                     <Card.Text style={{minHeight: "150px"}}>{card.text}</Card.Text>
                     <Button variant="primary">{card.buttonText}</Button>
                   </Card.Body>
