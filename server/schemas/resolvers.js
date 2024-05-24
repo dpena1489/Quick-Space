@@ -107,8 +107,26 @@ const resolvers = {
 
     //   return { session: session.id };
     // },
-  },
+
   Mutation: {
+    createUser: async (parent, { firstName, lastName, username, email, password }, context) => {
+      const user = new context.models.User({ firstName, lastName, username, email, password });
+      return await user.save();
+    },
+    createCategory: async (parent, { name }, context) => {
+      const category = new context.models.Category({ name });
+      return await category.save();
+    },
+    createListing: async (parent, { title, owner, address, description, image, pricePerHour, availability, rating, capacity, rules, amenities, categoryId }, context) => {
+      const listing = new context.models.Listing({ title, owner, address, description, image, pricePerHour, availability, rating, capacity, rules, amenities, category: categoryId });
+      return await listing.save();
+    },
+    createBooking: async (parent, { userId, listingId, startTime, endTime, totalPrice }, context) => {
+      const booking = new context.models.Booking({ user: userId, listing: listingId, startTime, endTime, totalPrice });
+      return await booking.save();
+    },
+  },
+
     // addUser: async (parent, args) => {
     //   const user = await User.create(args);
     //   const token = signToken(user);
