@@ -4,6 +4,31 @@
 
 const resolvers = {
   Query: {
+        users: async (parent, args, context) => {
+          return await context.models.User.find({});
+        },
+        user: async (parent, { id }, context) => {
+          return await context.models.User.findById(id);
+        },
+        categories: async (parent, args, context) => {
+          return await context.models.Category.find({});
+        },
+        category: async (parent, { id }, context) => {
+          return await context.models.Category.findById(id);
+        },
+        listings: async (parent, args, context) => {
+          return await context.models.Listing.find({});
+        },
+        listing: async (parent, { id }, context) => {
+          return await context.models.Listing.findById(id);
+        },
+        bookings: async (parent, args, context) => {
+          return await context.models.Booking.find({});
+        },
+        booking: async (parent, { id }, context) => {
+          return await context.models.Booking.findById(id);
+        },
+      },
     // categories: async () => {
     //   return await Category.find();
     // },
