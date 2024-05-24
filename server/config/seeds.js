@@ -94,7 +94,7 @@ db.once('open', async () => {
       owner: 'Jessica Brown',
       address: '123 Elm Street',
       description: 'A stylish loft apartment with modern amenities and city views.',
-      images: ['', '', ''],
+      images: ['https://www.istockphoto.com/en/photo/modern-living-room-interior-3d-render-gm1293762741-388044683', 'https://www.istockphoto.com/en/photo/3d-rendering-of-an-elegant-bedroom-gm1213695547-352841832', ''],
       pricePerHour: 50.00,
       availability: true,
       rating: 4.8,
@@ -108,7 +108,7 @@ db.once('open', async () => {
       owner: 'Daniel White',
       address: '456 Oak Street',
       description: 'A cosy cabin retreat nestled in the woods, perfect for a weekend getaway.',
-      images: ['', '', ''],
+      images: ['https://www.istockphoto.com/en/photo/cozy-place-gm1016887284-273528940', 'https://www.istockphoto.com/en/photo/wooden-house-bedroom-peaceful-living-area-gm1335997056-417425977', ''],
       pricePerHour: 70.00,
       availability: true,
       rating: 4.7,
@@ -122,7 +122,7 @@ db.once('open', async () => {
       owner: 'Olivia Taylor',
       address: '789 Ocean Avenue',
       description: 'A luxurious beach house with direct access to the beach and stunning ocean views.',
-      images: ['', '', ''],
+      images: ['https://pixabay.com/photos/beach-house-holiday-home-house-349670/', 'https://www.istockphoto.com/de/foto/sunset-beach-pfad-panorama-hintergrund-gm832047798-135379027', ''],
       pricePerHour: 100.00,
       availability: true,
       rating: 4.9,
@@ -136,7 +136,7 @@ db.once('open', async () => {
       owner: 'Sophie Johnson',
       address: '101 Forest Lane',
       description: 'A charming cottage with a rustic feel, surrounded by beautiful gardens.',
-      images: ['', '', ''],
+      images: ['https://pixabay.com/photos/house-cottage-home-old-rustic-908459/', 'https://pixabay.com/photos/cosmos-flowers-garden-petals-bloom-1587514/', ''],
       pricePerHour: 80.00,
       availability: true,
       rating: 4.6,
@@ -150,7 +150,7 @@ db.once('open', async () => {
       owner: 'Noah Garcia',
       address: '234 Summit Road',
       description: 'A cozy mountain cabin nestled in the heart of the wilderness, offering breathtaking views.',
-      images: ['', '', ''],
+      images: ['https://pixabay.com/photos/lake-cabin-mountains-reflection-5757938/', 'https://pixabay.com/photos/green-meadow-mountains-switzerland-8534434/', ''],
       pricePerHour: 90.00,
       availability: true,
       rating: 4.8,
@@ -159,22 +159,154 @@ db.once('open', async () => {
       amenities: ['Mountain Views', 'Deck', 'Hiking Trails'],
       category: categories.find(category => category.name === 'Home Space')._id
     },
-    //the follwoing 5 listings are listing objects for the 'Studio Space' category
-    {
-      title: 'Cozy Home Studio',
-      owner: 'Jane Smith',
-      address: '456 Oak Avenue',
-      description: 'A cozy studio apartment perfect for solo travelers or couples.',
-      image: ['', '', ''],
-      pricePerHour: 30.00,
-      availability: true,
-      rating: 4.8,
-      capacity: 2,
-      rules: 'No parties or loud noises after 10 PM. Keep the space clean.',
-      amenities: ['Kitchenette', 'Private Bathroom', 'WiFi'],
-      category: categories.find(category => category.name === 'Studio Space')._id
-    },
+     //the follwoing 5 listings are listing objects for the 'Studio Space' category
+  {
+    title: 'Cozy Home Studio',
+    owner: 'Jane Smith',
+    address: '456 Oak Avenue',
+    description: 'A cozy studio apartment perfect for solo travelers or couples.',
+    image: ['', '', ''],
+    pricePerHour: 30.00,
+    availability: true,
+    rating: 4.8,
+    capacity: 2,
+    rules: 'No parties or loud noises after 10 PM. Keep the space clean.',
+    amenities: ['Kitchenette', 'Private Bathroom', 'WiFi'],
+    category: categories.find(category => category.name === 'Studio Space')._id
+   },
+   {
+    title: 'Artistic Studio Loft',
+    owner: 'Grace Lee',
+    address: '123 Art Avenue',
+    description: 'An artistic studio loft designed for creativity and inspiration.',
+    images: ['', '', ''],
+    pricePerHour: 60.00,
+    availability: true,
+    rating: 4.7,
+    capacity: 5,
+    rules: 'No smoking or pets indoors. Keep noise levels conducive to work.',
+    amenities: ['Art Supplies', 'Natural Light', 'Creative Atmosphere'],
+    category: categories.find(category => category.name === 'Studio Space')._id
+   },
+   {
+    title: 'Photography Studio',
+    owner: 'James Smith',
+    address: '456 Shutter Street',
+    description: 'A fully-equipped photography studio for professional shoots and creative projects.',
+    images: ['', '', ''],
+    pricePerHour: 80.00,
+    availability: true,
+    rating: 4.9,
+    capacity: 3,
+    rules: 'No food or drinks near photography equipment. Clean up after use.',
+    amenities: ['Backdrop System', 'Lighting Equipment', 'Editing Suite'],
+    category: categories.find(category => category.name === 'Studio Space')._id
+   },
+   {
+    title: 'Dance Studio',
+    owner: 'Emma Johnson',
+    address: '789 Dance Avenue',
+    description: 'A spacious dance studio with mirrored walls and sprung floors for rehearsals and classes.',
+    images: ['', '', ''],
+    pricePerHour: 70.00,
+    availability: true,
+    rating: 4.8,
+    capacity: 15,
+    rules: 'No outdoor shoes on dance floor. Respect others sharing the space.',
+    amenities: ['Mirrored Walls', 'Sprung Floors', 'Sound System'],
+    category: categories.find(category => category.name === 'Studio Space')._id
+   },
+   {
+    title: 'Recording Studio',
+    owner: 'Sarah Nalepa',
+    address: '101 Music Street',
+    description: 'A professional recording studio equipped with state-of-the-art audio equipment.',
+    images: ['', '', ''],
+    pricePerHour: 100.00,
+    availability: true,
+    rating: 4.9,
+    capacity: 2,
+    rules: 'No food or drinks near recording equipment. Keep noise levels to a minimum.',
+    amenities: ['Soundproofing', 'Mixing Console', 'Vocal Booth'],
+    category: categories.find(category => category.name === 'Studio Space')._id
+   },
+   {
+    title: 'Quiet Library Room',
+    owner: 'Sarah Johnson',
+    address: '123 Library Street',
+    description: 'A quiet library room perfect for focused studying and research.',
+    images: ['', '', ''],
+    pricePerHour: 40.00,
+    availability: true,
+    rating: 4.6,
+    capacity: 8,
+    rules: 'Maintain silence in the library. No food or drinks near books.',
+    amenities: ['Study Desks', 'Bookshelves', 'Reading Lamps'],
+    category: categories.find(category => category.name === 'Study Space')._id
+   },
+   {
+    title: 'Cozy Study Nook',
+    owner: 'Michael Brown',
+    address: '456 Bookworm Avenue',
+    description: 'A cozy study nook with comfortable seating and ample natural light.',
+    images: ['', '', ''],
+    pricePerHour: 35.00,
+    availability: true,
+    rating: 4.5,
+    capacity: 4,
+    rules: 'No loud noises. Keep the space tidy and organized.',
+    amenities: ['Comfy Chairs', 'Study Tables', 'Large Windows'],
+    category: categories.find(category => category.name === 'Study Space')._id
+   },
+   {
+    title: 'Private Study Room',
+    owner: 'Emma Wilson',
+    address: '789 Quiet Street',
+    description: 'A private study room with a peaceful atmosphere for individual study sessions.',
+    images: ['', '', ''],
+    pricePerHour: 50.00,
+    availability: true,
+    rating: 4.7,
+    capacity: 2,
+    rules: 'Respect others\' privacy. Keep noise levels to a minimum.',
+    amenities: ['Desk', 'Chair', 'Quiet Environment'],
+    category: categories.find(category => category.name === 'Study Space')._id
+   },
+   {
+    title: 'Modern Coworking Space',
+    owner: 'Olivia Taylor',
+    address: '101 Workspace Avenue',
+    description: 'A modern coworking space with flexible seating options and high-speed internet.',
+    images: ['', '', ''],
+    pricePerHour: 45.00,
+    availability: true,
+    rating: 4.8,
+    capacity: 10,
+    rules: 'Respect others\' workspace. Keep noise levels appropriate for work.',
+    amenities: ['Shared Desks', 'Meeting Rooms', 'High-Speed Internet'],
+    category: categories.find(category => category.name === 'Study Space')._id
+   },
+   {
+    title: 'University Study Lounge',
+    owner: 'Daniel White',
+    address: '234 Campus Drive',
+    description: 'A university study lounge equipped with study carrels and group study areas.',
+    images: ['', '', ''],
+    pricePerHour: 55.00,
+    availability: true,
+    rating: 4.9,
+    capacity: 20,
+    rules: 'Keep noise levels appropriate for studying. Respect other students\' space.',
+    amenities: ['Study Carrels', 'Group Study Areas', 'Quiet Environment'],
+    category: categories.find(category => category.name === 'Study Space')._id
+   },
   ]);
+ 
+ 
+ 
+ 
+ 
+ 
 
   console.log('Listings seeded');
 
@@ -191,14 +323,40 @@ db.once('open', async () => {
     ]
   });
 
-  await User.create({
+//   await User.create({
+//     firstName: 'Elijah',
+//     lastName: 'Holt',
+//     email: 'eholt@testmail.com',
+//     password: 'password12345'
+//   });
+
+//   console.log('users seeded');
+
+//   process.exit();
+// });
+
+// Create Users
+  const pamela = await User.create({
+    firstName: 'Pamela',
+    lastName: 'Washington',
+    email: 'pamela@testmail.com',
+    password: 'password12345',
+  });
+  const elijah = await User.create({
     firstName: 'Elijah',
     lastName: 'Holt',
     email: 'eholt@testmail.com',
     password: 'password12345'
   });
-
-  console.log('users seeded');
-
+  console.log('Users seeded');
+  // Associate Listings with Users via Bookings
+  await Booking.create({
+    user: pamela._id,
+    listings: [
+      listings[0]._id,
+      listings[1]._id,
+    ]
+  });
+  console.log('Bookings seeded');
   process.exit();
 });
