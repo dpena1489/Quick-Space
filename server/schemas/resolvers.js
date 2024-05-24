@@ -181,7 +181,25 @@ const resolvers = {
 
     //   return { token, user };
     // },
-  },
-};
+
+    User: {
+      bookings: async (parent, args, context) => {
+        return await context.models.Booking.find({ user: parent.id });
+      },
+    },
+    Listing: {
+      category: async (parent, args, context) => {
+        return await context.models.Category.findById(parent.category);
+      },
+    },
+    Booking: {
+      user: async (parent, args, context) => {
+        return await context.models.User.findById(parent.user);
+      },
+      listing: async (parent, args, context) => {
+        return await context.models.Listing.findById(parent.listing);
+      },
+    },
+  };
 
 module.exports = resolvers;
