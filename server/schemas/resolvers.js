@@ -1,34 +1,36 @@
 // const { User, Category } = require('../models');
 // const { signToken, AuthenticationError } = require('../utils/auth');
 // const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
+const { User, Listing, Category, Booking } = require('../models');
+const bcrypt = require('bcrypt');
 
 const resolvers = {
   Query: {
-        users: async (parent, args, context) => {
-          return await context.models.User.find({});
-        },
-        user: async (parent, { id }, context) => {
-          return await context.models.User.findById(id);
-        },
-        categories: async (parent, args, context) => {
-          return await context.models.Category.find({});
-        },
-        category: async (parent, { id }, context) => {
-          return await context.models.Category.findById(id);
-        },
-        listings: async (parent, args, context) => {
-          return await context.models.Listing.find({});
-        },
-        listing: async (parent, { id }, context) => {
-          return await context.models.Listing.findById(id);
-        },
-        bookings: async (parent, args, context) => {
-          return await context.models.Booking.find({});
-        },
-        booking: async (parent, { id }, context) => {
-          return await context.models.Booking.findById(id);
-        },
-      },
+    users: async (parent, args, context) => {
+      return await User.find({});
+    },
+    user: async (parent, { id }, context) => {
+      return await User.findById(id);
+    },
+    categories: async (parent, args, context) => {
+      return await Category.find({});
+    },
+    category: async (parent, { id }, context) => {
+      return await Category.findById(id);
+    },
+    listings: async (parent, args, context) => {
+      return await Listing.find({});
+    },
+    listing: async (parent, { id }, context) => {
+      return await Listing.findById(id);
+    },
+    bookings: async (parent, args, context) => {
+      return await Booking.find({});
+    },
+    booking: async (parent, { id }, context) => {
+      return await Booking.findById(id);
+    },
+  },
     // categories: async () => {
     //   return await Category.find();
     // },
@@ -108,24 +110,25 @@ const resolvers = {
     //   return { session: session.id };
     // },
 
-  Mutation: {
-    createUser: async (parent, { firstName, lastName, username, email, password }, context) => {
-      const user = new context.models.User({ firstName, lastName, username, email, password });
-      return await user.save();
+    Mutation: {
+      createUser: async (parent, { firstName, lastName, username, email, password }, context) => {
+        const hashedPassword = await bcrypt.hash(password, 10);
+        const user = new User({ firstName, lastName, username, email, password: hashedPassword });
+        return await user.save();
+      },
+      createCategory: async (parent, { name }, context) => {
+        const category = new Category({ name });
+        return await category.save();
+      },
+      createListing: async (parent, { title, owner, address, description, image, pricePerHour, availability, rating, capacity, rules, amenities, categoryId }, context) => {
+        const listing = new Listing({ title, owner, address, description, image, pricePerHour, availability, rating, capacity, rules, amenities, category: categoryId });
+        return await listing.save();
+      },
+      createBooking: async (parent, { userId, listingId, startTime, endTime, totalPrice }, context) => {
+        const booking = new Booking({ user: userId, listing: listingId, startTime, endTime, totalPrice });
+        return await booking.save();
+      },
     },
-    createCategory: async (parent, { name }, context) => {
-      const category = new context.models.Category({ name });
-      return await category.save();
-    },
-    createListing: async (parent, { title, owner, address, description, image, pricePerHour, availability, rating, capacity, rules, amenities, categoryId }, context) => {
-      const listing = new context.models.Listing({ title, owner, address, description, image, pricePerHour, availability, rating, capacity, rules, amenities, category: categoryId });
-      return await listing.save();
-    },
-    createBooking: async (parent, { userId, listingId, startTime, endTime, totalPrice }, context) => {
-      const booking = new context.models.Booking({ user: userId, listing: listingId, startTime, endTime, totalPrice });
-      return await booking.save();
-    },
-  },
 
     // addUser: async (parent, args) => {
     //   const user = await User.create(args);
@@ -184,22 +187,22 @@ const resolvers = {
 
     User: {
       bookings: async (parent, args, context) => {
-        return await context.models.Booking.find({ user: parent.id });
+        return await Booking.find({ user: parent.id });
       },
     },
     Listing: {
       category: async (parent, args, context) => {
-        return await context.models.Category.findById(parent.category);
+        return await Category.findById(parent.category);
       },
     },
     Booking: {
       user: async (parent, args, context) => {
-        return await context.models.User.findById(parent.user);
+        return await User.findById(parent.user);
       },
       listing: async (parent, args, context) => {
-        return await context.models.Listing.findById(parent.listing);
+        return await Listing.findById(parent.listing);
       },
     },
   };
-
-module.exports = resolvers;
+  
+  module.exports = resolvers;
