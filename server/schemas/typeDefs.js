@@ -14,3 +14,20 @@ const typeDefs = gql`
     id: ID!
     name: String!
   }
+
+  type Listing {
+    id: ID!
+    title: String!
+    owner: String!
+    address: String!
+    description: String
+    image: String
+    pricePerHour: Float!
+    availability: Boolean!
+    rating: Float
+    capacity: Int
+    rules: String
+    amenities: [String]
+    createdAt: String
+    category: Category!
+  }
