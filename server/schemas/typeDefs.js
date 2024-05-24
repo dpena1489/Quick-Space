@@ -51,3 +51,13 @@ const typeDefs = gql`
     bookings: [Booking]
     booking(id: ID!): Booking
   }
+
+  type Mutation {
+    createUser(firstName: String!, lastName: String!, username: String!, email: String!, password: String!): User
+    createCategory(name: String!): Category
+    createListing(title: String!, owner: String!, address: String!, description: String, image: String, pricePerHour: Float!, availability: Boolean!, rating: Float, capacity: Int, rules: String, amenities: [String], categoryId: ID!): Listing
+    createBooking(userId: ID!, listingId: ID!, startTime: String!, endTime: String!, totalPrice: Float!): Booking
+  }
+`;
+
+module.exports = typeDefs;
