@@ -31,3 +31,23 @@ const typeDefs = gql`
     createdAt: String
     category: Category!
   }
+
+  type Booking {
+    id: ID!
+    user: User!
+    listing: Listing!
+    startTime: String!
+    endTime: String!
+    totalPrice: Float!
+  }
+
+  type Query {
+    users: [User]
+    user(id: ID!): User
+    categories: [Category]
+    category(id: ID!): Category
+    listings: [Listing]
+    listing(id: ID!): Listing
+    bookings: [Booking]
+    booking(id: ID!): Booking
+  }
