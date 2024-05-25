@@ -3,6 +3,10 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const listingSchema = new Schema({
+  _id:{
+    type: Schema.Types.ObjectId,
+    auto: true
+  },
   title: {
     type: String,
     required: true,
@@ -59,8 +63,7 @@ const listingSchema = new Schema({
     default: Date.now
   },
   category: {
-    type: Schema.Types.ObjectId,
-    ref: 'Category',
+    type: String,
     required: true
   }
 });

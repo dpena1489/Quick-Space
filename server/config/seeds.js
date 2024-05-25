@@ -30,7 +30,7 @@ db.once('open', async () => {
       capacity: 20,
       rules: 'No smoking or pets allowed. Please clean up after yourselves.',
       amenities: ['Projector', 'Whiteboard', 'WiFi'],
-      category: categories.find(category => category.name === 'Group Space')._id
+      category: 'Group Space'
     },
     {
       title: 'Modern Conference Hall',
@@ -58,7 +58,7 @@ db.once('open', async () => {
       capacity: 30,
       rules: 'No outside food or drinks allowed. Keep noise levels to a minimum after 10 PM.',
       amenities: ['Outdoor Seating', 'Barbecue Grill', 'City Views'],
-      category: categories.find(category => category.name === 'Group Space')._id
+      category: 'Group Space'
     },
     {
       title: 'Community Center',
@@ -72,7 +72,7 @@ db.once('open', async () => {
       capacity: 100,
       rules: 'Respect other users of the facility. Clean up after use.',
       amenities: ['Meeting Rooms', 'Gymnasium', 'Kitchen'],
-      category: categories.find(category => category.name === 'Group Space')._id
+      category: 'Group Space'
     },
     {
       title: 'Art Gallery',
@@ -86,7 +86,7 @@ db.once('open', async () => {
       capacity: 50,
       rules: 'No touching the artworks. Keep noise levels low during exhibitions.',
       amenities: ['Display Walls', 'Lighting Equipment', 'Seating Area'],
-      category: categories.find(category => category.name === 'Group Space')._id
+      category: 'Group Space'
     },
     //the following 5 listings are listing objects for the 'Home Space' category.
     {
@@ -101,79 +101,79 @@ db.once('open', async () => {
       capacity: 4,
       rules: 'No smoking indoors. Pets allowed with prior approval.',
       amenities: ['Fully Equipped Kitchen', 'Balcony', 'City Views'],
-      category: categories.find(category => category.name === 'Home Space')._id
+      category: 'Home Space'
     },
-    {
-      title: 'Cosy Cabin Retreat',
-      owner: 'Daniel White',
-      address: '456 Oak Street',
-      description: 'A cosy cabin retreat nestled in the woods, perfect for a weekend getaway.',
-      images: ['', '', ''],
-      pricePerHour: 70.00,
-      availability: true,
-      rating: 4.7,
-      capacity: 2,
-      rules: 'No parties or loud noises. Respect the natural surroundings.',
-      amenities: ['Fireplace', 'Outdoor Seating', 'Nature Trails'],
-      category: categories.find(category => category.name === 'Home Space')._id
-    },
-    {
-      title: 'Luxury Beach House',
-      owner: 'Olivia Taylor',
-      address: '789 Ocean Avenue',
-      description: 'A luxurious beach house with direct access to the beach and stunning ocean views.',
-      images: ['', '', ''],
-      pricePerHour: 100.00,
-      availability: true,
-      rating: 4.9,
-      capacity: 6,
-      rules: 'No smoking or pets indoors. Keep noise levels low at night.',
-      amenities: ['Private Beach Access', 'Hot Tub', 'Sun Deck'],
-      category: categories.find(category => category.name === 'Home Space')._id
-    },
-    {
-      title: 'Charming Cottage',
-      owner: 'Sophie Johnson',
-      address: '101 Forest Lane',
-      description: 'A charming cottage with a rustic feel, surrounded by beautiful gardens.',
-      images: ['', '', ''],
-      pricePerHour: 80.00,
-      availability: true,
-      rating: 4.6,
-      capacity: 4,
-      rules: 'No smoking indoors. Pets allowed in designated areas only.',
-      amenities: ['Garden', 'Fire Pit', 'Porch Swing'],
-      category: categories.find(category => category.name === 'Home Space')._id
-    },
-    {
-      title: 'Scenic Mountain Cabin',
-      owner: 'Noah Garcia',
-      address: '234 Summit Road',
-      description: 'A cozy mountain cabin nestled in the heart of the wilderness, offering breathtaking views.',
-      images: ['', '', ''],
-      pricePerHour: 90.00,
-      availability: true,
-      rating: 4.8,
-      capacity: 3,
-      rules: 'No parties or loud noises. Respect the natural environment.',
-      amenities: ['Mountain Views', 'Deck', 'Hiking Trails'],
-      category: categories.find(category => category.name === 'Home Space')._id
-    },
-    //the follwoing 5 listings are listing objects for the 'Studio Space' category
-    {
-      title: 'Cozy Home Studio',
-      owner: 'Jane Smith',
-      address: '456 Oak Avenue',
-      description: 'A cozy studio apartment perfect for solo travelers or couples.',
-      image: ['', '', ''],
-      pricePerHour: 30.00,
-      availability: true,
-      rating: 4.8,
-      capacity: 2,
-      rules: 'No parties or loud noises after 10 PM. Keep the space clean.',
-      amenities: ['Kitchenette', 'Private Bathroom', 'WiFi'],
-      category: categories.find(category => category.name === 'Studio Space')._id
-    },
+  //   {
+  //     title: 'Cosy Cabin Retreat',
+  //     owner: 'Daniel White',
+  //     address: '456 Oak Street',
+  //     description: 'A cosy cabin retreat nestled in the woods, perfect for a weekend getaway.',
+  //     images: ['', '', ''],
+  //     pricePerHour: 70.00,
+  //     availability: true,
+  //     rating: 4.7,
+  //     capacity: 2,
+  //     rules: 'No parties or loud noises. Respect the natural surroundings.',
+  //     amenities: ['Fireplace', 'Outdoor Seating', 'Nature Trails'],
+  //     category: categories.find(category => category.name === 'Home Space')._id
+  //   },
+  //   {
+  //     title: 'Luxury Beach House',
+  //     owner: 'Olivia Taylor',
+  //     address: '789 Ocean Avenue',
+  //     description: 'A luxurious beach house with direct access to the beach and stunning ocean views.',
+  //     images: ['', '', ''],
+  //     pricePerHour: 100.00,
+  //     availability: true,
+  //     rating: 4.9,
+  //     capacity: 6,
+  //     rules: 'No smoking or pets indoors. Keep noise levels low at night.',
+  //     amenities: ['Private Beach Access', 'Hot Tub', 'Sun Deck'],
+  //     category: categories.find(category => category.name === 'Home Space')._id
+  //   },
+  //   {
+  //     title: 'Charming Cottage',
+  //     owner: 'Sophie Johnson',
+  //     address: '101 Forest Lane',
+  //     description: 'A charming cottage with a rustic feel, surrounded by beautiful gardens.',
+  //     images: ['', '', ''],
+  //     pricePerHour: 80.00,
+  //     availability: true,
+  //     rating: 4.6,
+  //     capacity: 4,
+  //     rules: 'No smoking indoors. Pets allowed in designated areas only.',
+  //     amenities: ['Garden', 'Fire Pit', 'Porch Swing'],
+  //     category: categories.find(category => category.name === 'Home Space')._id
+  //   },
+  //   {
+  //     title: 'Scenic Mountain Cabin',
+  //     owner: 'Noah Garcia',
+  //     address: '234 Summit Road',
+  //     description: 'A cozy mountain cabin nestled in the heart of the wilderness, offering breathtaking views.',
+  //     images: ['', '', ''],
+  //     pricePerHour: 90.00,
+  //     availability: true,
+  //     rating: 4.8,
+  //     capacity: 3,
+  //     rules: 'No parties or loud noises. Respect the natural environment.',
+  //     amenities: ['Mountain Views', 'Deck', 'Hiking Trails'],
+  //     category: categories.find(category => category.name === 'Home Space')._id
+  //   },
+  //   //the follwoing 5 listings are listing objects for the 'Studio Space' category
+  //   {
+  //     title: 'Cozy Home Studio',
+  //     owner: 'Jane Smith',
+  //     address: '456 Oak Avenue',
+  //     description: 'A cozy studio apartment perfect for solo travelers or couples.',
+  //     image: ['', '', ''],
+  //     pricePerHour: 30.00,
+  //     availability: true,
+  //     rating: 4.8,
+  //     capacity: 2,
+  //     rules: 'No parties or loud noises after 10 PM. Keep the space clean.',
+  //     amenities: ['Kitchenette', 'Private Bathroom', 'WiFi'],
+  //     category: categories.find(category => category.name === 'Studio Space')._id
+  //   },
   ]);
 
   console.log('Listings seeded');
@@ -184,11 +184,11 @@ db.once('open', async () => {
     lastName: 'Washington',
     email: 'pamela@testmail.com',
     password: 'password12345',
-    orders: [
-      {
-        products: [products[0]._id, products[0]._id, products[1]._id]
-      }
-    ]
+    // orders: [
+    //   {
+    //     products: [products[0]._id, products[0]._id, products[1]._id]
+    //   }
+    // ]
   });
 
   await User.create({
