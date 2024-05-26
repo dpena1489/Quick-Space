@@ -1,16 +1,19 @@
-// const { User, Category } = require('../models');
-// const { signToken, AuthenticationError } = require('../utils/auth');
+const { User, Category } = require('../models');
+const { signToken, AuthenticationError } = require('../utils/auth');
 // const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 const { User, Listing, Category, Booking } = require('../models');
 const bcrypt = require('bcrypt');
 
 const resolvers = {
   Query: {
-    users: async (parent, args, context) => {
-      return await User.find({});
-    },
-    user: async (parent, { id }, context) => {
-      return await User.findById(id);
+    // users: async (parent, args, context) => {
+    //   return await User.find({});
+    // },
+    user: async (parent, args, context) => {
+      if(context.user){
+        return await User.findById(context.user._id).populate('bookings');
+      }
+      throw AuthenticationError
     },
     categories: async (parent, args, context) => {
       return await Category.find({});
@@ -19,17 +22,26 @@ const resolvers = {
       return await Category.findById(id);
     },
     listings: async (parent, args, context) => {
-      return await Listing.find({});
+      if (context.user){
+
+        return await Listing.find({});
+      }
+      throw AuthenticationError
     },
     listing: async (parent, { id }, context) => {
-      return await Listing.findById(id);
+      if (context.user){
+
+        return await Listing.findById(id);
+        
+      }
+      throw AuthenticationError
     },
-    bookings: async (parent, args, context) => {
-      return await Booking.find({});
-    },
-    booking: async (parent, { id }, context) => {
-      return await Booking.findById(id);
-    },
+    // bookings: async (parent, args, context) => {
+    //   return await Booking.find({});
+    // },
+    // booking: async (parent, { id }, context) => {
+    //   return await Booking.findById(id);
+    // },
   },
     // categories: async () => {
     //   return await Category.find();
@@ -111,10 +123,10 @@ const resolvers = {
     // },
 
     Mutation: {
-      createUser: async (parent, { firstName, lastName, username, email, password }, context) => {
-        const hashedPassword = await bcrypt.hash(password, 10);
-        const user = new User({ firstName, lastName, username, email, password: hashedPassword });
-        return await user.save();
+      createUser: async (parent, args, context) => {
+        const user =  await User.create(args);
+        const token =  signToken(user);
+        return { token, user };
       },
       createCategory: async (parent, { name }, context) => {
         const category = new Category({ name });
@@ -136,6 +148,23 @@ const resolvers = {
 
     //   return { token, user };
     // },
+    login: async (parent, { email, password }) => {
+      const user = await User.findOne({ email });
+
+      if (!user) {
+        throw AuthenticationError;
+      }
+
+      const correctPw = await user.isCorrectPassword(password);
+
+      if (!correctPw) {
+        throw AuthenticationError;
+      }
+
+      const token = signToken(user);
+
+      return { token, user };
+    },
     // addOrder: async (parent, { products }, context) => {
     //   if (context.user) {
     //     const order = new Order({ products });
@@ -154,13 +183,13 @@ const resolvers = {
     //     return await User.findByIdAndUpdate(context.user._id, args, {
     //       new: true,
     //     });
+
     //   }
 
     //   throw AuthenticationError;
     // },
     // updateProduct: async (parent, { _id, quantity }) => {
     //   const decrement = Math.abs(quantity) * -1;
-
     //   return await Product.findByIdAndUpdate(
     //     _id,
     //     { $inc: { quantity: decrement } },
@@ -185,24 +214,24 @@ const resolvers = {
     //   return { token, user };
     // },
 
-    User: {
-      bookings: async (parent, args, context) => {
-        return await Booking.find({ user: parent.id });
-      },
-    },
-    Listing: {
-      category: async (parent, args, context) => {
-        return await Category.findById(parent.category);
-      },
-    },
-    Booking: {
-      user: async (parent, args, context) => {
-        return await User.findById(parent.user);
-      },
-      listing: async (parent, args, context) => {
-        return await Listing.findById(parent.listing);
-      },
-    },
+    // User: {
+    //   bookings: async (parent, args, context) => {
+    //     return await Booking.find({ user: parent.id });
+    //   },
+    // },
+    // Listing: {
+    //   category: async (parent, args, context) => {
+    //     return await Category.findById(parent.category);
+    //   },
+    // },
+    // Booking: {
+    //   user: async (parent, args, context) => {
+    //     return await User.findById(parent.user);
+    //   },
+    //   listing: async (parent, args, context) => {
+    //     return await Listing.findById(parent.listing);
+    //   },
+    // },
   };
   
   module.exports = resolvers;

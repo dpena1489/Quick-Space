@@ -25,9 +25,11 @@ const listingSchema = new Schema({
   description: {
     type: String
   },
-  image: {
+  image: [
+    {
     type: String
   },
+],
   pricePerHour: {
     type: Number,
     required: true,
