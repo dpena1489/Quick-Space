@@ -76,7 +76,7 @@ db.once('open', async () => {
     },
     {
       title: 'Art Gallery',
-      owner: 'Sophia Martinez',
+      owner: 'Pedro Gonzalez',
       address: '890 Oakwood Drive',
       description: 'An art gallery space suitable for exhibitions, workshops, and events.',
       images: ['', '', ''],
@@ -119,7 +119,7 @@ db.once('open', async () => {
     },
     {
       title: 'Luxury Beach House',
-      owner: 'Olivia Taylor',
+      owner: 'Daisy Pena',
       address: '789 Ocean Avenue',
       description: 'A luxurious beach house with direct access to the beach and stunning ocean views.',
       images: ['https://pixabay.com/photos/beach-house-holiday-home-house-349670/', 'https://www.istockphoto.com/de/foto/sunset-beach-pfad-panorama-hintergrund-gm832047798-135379027', ''],
