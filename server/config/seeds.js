@@ -279,7 +279,7 @@ db.once('open', async () => {
     address: '101 Workspace Avenue',
     description: 'A modern coworking space with flexible seating options and high-speed internet.',
     images: ['', '', ''],
-    pricePerHour: 45.00,
+    pricePerHour: 65.00,
     availability: true,
     rating: 4.8,
     capacity: 10,
