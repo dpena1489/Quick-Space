@@ -21,11 +21,11 @@ const listingSchema = new Schema({
   description: {
     type: String
   },
-  image: [
+  images: [
     {
-    type: String
-  },
-],
+      type: String
+    },
+  ],
   pricePerHour: {
     type: Number,
     required: true,
@@ -35,11 +35,11 @@ const listingSchema = new Schema({
     type: Boolean,
     default: true
   },
-  rating: {
-    type: Number,
-    min: 0,
-    max: 5
-  },
+  // rating: {
+  //   type: Number,
+  //   min: 0,
+  //   max: 5
+  // },
   // reviews: [
   //   {
   //     type: Schema.Types.ObjectId,
@@ -61,8 +61,7 @@ const listingSchema = new Schema({
     default: Date.now
   },
   category: {
-    type: Schema.Types.ObjectId,
-    ref: 'Category',
+    type: String,
     required: true
   }
 });

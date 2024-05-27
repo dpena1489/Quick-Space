@@ -1,44 +1,47 @@
-const { User, Category } = require('../models');
+const { User, Listing, Category, Booking } = require('../models');
 const { signToken, AuthenticationError } = require('../utils/auth');
 // const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 
+
 const resolvers = {
   Query: {
-    // categories: async () => {
-    //   return await Category.find();
-    // },
-    // products: async (parent, { category, name }) => {
-    //   const params = {};
 
-    //   if (category) {
-    //     params.category = category;
-    //   }
+    user: async (parent, args, context) => {
+      if(context.user){
+        return await User.findById(context.user._id).populate('bookings');
+      }
+      throw AuthenticationError
+    },
+    categories: async (parent, args, context) => {
+      return await Category.find({});
+    },
+    category: async (parent, { id }, context) => {
+      return await Category.findById(id);
+    },
+    listings: async (parent, args, context) => {
+      if (context.user){
 
-    //   if (name) {
-    //     params.name = {
-    //       $regex: name,
-    //     };
-    //   }
+        return await Listing.find({});
+      }
+      throw AuthenticationError
+    },
+    listing: async (parent, { id }, context) => {
+      if (context.user){
 
-    //   return await Product.find(params).populate('category');
-    // },
-    // product: async (parent, { _id }) => {
-    //   return await Product.findById(_id).populate('category');
-    // },
-    // user: async (parent, args, context) => {
-    //   if (context.user) {
-    //     const user = await User.findById(context.user._id).populate({
-    //       path: 'orders.products',
-    //       populate: 'category',
-    //     });
+        return await Listing.findById(id);
+        
+      }
+      throw AuthenticationError
+    },
 
-    //     user.orders.sort((a, b) => b.purchaseDate - a.purchaseDate);
-
-    //     return user;
-    //   }
-
-    //   throw AuthenticationError;
-    // },
+    booking: async (parent, { _id }, context) => {
+      if (context.user){
+        return await Booking.findById(_id);
+      }
+      throw AuthenticationError
+    },
+  },
+   
     // order: async (parent, { _id }, context) => {
     //   if (context.user) {
     //     const user = await User.findById(context.user._id).populate({
@@ -82,63 +85,45 @@ const resolvers = {
 
     //   return { session: session.id };
     // },
-  },
-  Mutation: {
-    addUser: async (parent, args) => {
-      const user = await User.create(args);
-      const token = signToken(user);
 
-      return { token, user };
+    Mutation: {
+      createUser: async (parent, args, context) => {
+        const user =  await User.create(args);
+        const token =  signToken(user);
+        return { token, user };
+      },
+
+      createBooking: async (parent, args, context) => {
+        if(context.user){
+          const booking = await Booking.create(args)
+          const updatedUser = await User.findOneAndUpdate(
+            { _id: context.user._id },
+            { $push: { bookings: booking._id } },
+            { new: true }
+          );
+          return updatedUser
+        }
+        throw AuthenticationError
+      },
+      login: async (parent, { email, password }) => {
+         const user = await User.findOne({ email });
+   
+         if (!user) {
+           throw AuthenticationError;
+         }
+   
+         const correctPw = await user.isCorrectPassword(password);
+   
+         if (!correctPw) {
+           throw AuthenticationError;
+         }
+   
+         const token = signToken(user);
+   
+         return { token, user };
+       },
     },
-    login: async (parent, { email, password }) => {
-      const user = await User.findOne({ email });
-
-      if (!user) {
-        throw AuthenticationError;
-      }
-
-      const correctPw = await user.isCorrectPassword(password);
-
-      if (!correctPw) {
-        throw AuthenticationError;
-      }
-
-      const token = signToken(user);
-
-      return { token, user };
-    },
-    // addOrder: async (parent, { products }, context) => {
-    //   if (context.user) {
-    //     const order = new Order({ products });
-
-    //     await User.findByIdAndUpdate(context.user._id, {
-    //       $push: { orders: order },
-    //     });
-
-    //     return order;
-    //   }
-
-    //   throw AuthenticationError;
-    // },
-    // updateUser: async (parent, args, context) => {
-    //   if (context.user) {
-    //     return await User.findByIdAndUpdate(context.user._id, args, {
-    //       new: true,
-    //     });
-
-    //   }
-
-    //   throw AuthenticationError;
-    // },
-    // updateProduct: async (parent, { _id, quantity }) => {
-    //   const decrement = Math.abs(quantity) * -1;
-    //   return await Product.findByIdAndUpdate(
-    //     _id,
-    //     { $inc: { quantity: decrement } },
-    //     { new: true }
-    //   );
-    // },
-  },
-};
-
-module.exports = resolvers;
+    
+  };
+  
+  module.exports = resolvers;
