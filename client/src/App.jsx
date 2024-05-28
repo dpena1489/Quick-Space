@@ -1,19 +1,15 @@
-import CheckoutForm from './pages/CheckoutForm';
-import Footer from './pages/Footer';
-import Header from './pages/Header';
-import { Outlet } from 'react-router-dom';
-// import { LoginSignup } from './pages/LoginSignup/LoginSignup';
+import Header from './components/layout/Header.jsx';
+import {Outlet} from 'react-router-dom';
+import Footer from "./components/layout/Footer.jsx";
 
 function App() {
-  return (
-    <div>
-      <Header />
-      <Outlet />
-    
-      <Footer></Footer>
-
-    </div>
-  );
+    return (
+        <div>
+            <Header/>
+            <Outlet/>
+            <Footer/>
+        </div>
+    );
 
 }
 

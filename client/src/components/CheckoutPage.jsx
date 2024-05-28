@@ -1,5 +1,5 @@
 import React from 'react';
-import Cart from './Cart';
+import Cart from '../pages/Cart';
 import CheckoutForm from './CheckoutForm';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
