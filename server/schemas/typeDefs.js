@@ -1,64 +1,63 @@
-const typeDefs = `
-  type Category {
-    _id: ID
-    name: String
-  }
+const { gql } = require('apollo-server-express');
 
-  type Listing {
-    _id: ID
-    name: String
-    description: String
-    image: String
-    quantity: Int
-    price: Float
-    category: Category
-  }
-
-  type Booking {
-    _id: ID
-    purchaseDate: String
-    listing: [Listing]
-  }
-
+const typeDefs = gql`
   type User {
-    _id: ID
-    firstName: String
-    lastName: String
-    email: String
+    id: ID!
+    firstName: String!
+    lastName: String!
+    username: String!
+    email: String!
     bookings: [Booking]
   }
 
-  type Checkout {
-    session: ID
+  type Category {
+    id: ID!
+    name: String!
   }
 
-  type Auth {
-    token: ID
-    user: User
-  }
-
-  input BookingInput {
-    _id: ID
-    purchaseQuantity: Int
-    name: String
+  type Listing {
+    id: ID!
+    title: String!
+    owner: String!
+    address: String!
+    description: String
     image: String
-    price: Float
-    quantity: Int
+    pricePerHour: Float!
+    availability: Boolean!
+    rating: Float
+    capacity: Int
+    rules: String
+    amenities: [String]
+    createdAt: String
+    category: Category!
+  }
+
+  type Booking {
+    id: ID!
+    listing: Listing!
+    startTime: String!
+    endTime: String!
+    totalPrice: Float!
+  }
+
+  type Auth{
+    token: ID,
+    user: User
   }
 
   type Query {
-    categories: [Category]
-    listings(category: ID, name: String): [Listing]
-    listing(_id: ID!): Listing
     user: User
-    booking(_id: ID!): Booking
-    checkout(products: [BookingInput]): Checkout
+    categories: [Category]
+    category(id: ID!): Category
+    listings: [Listing]
+    listing(id: ID!): Listing
+    booking(id: ID!): Booking
   }
 
   type Mutation {
-    addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
+    createUser(firstName: String!, lastName: String!, username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    addBooking(listing: ID!): Booking
+    createBooking( listingId: ID!, startTime: String!, endTime: String!, totalPrice: Float!): User
   }
 `;
 
