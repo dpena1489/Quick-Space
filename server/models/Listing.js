@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const { Schema } = mongoose;
+const { Schema, model } = mongoose;
 
 const listingSchema = new Schema({
   title: {
@@ -61,11 +61,15 @@ const listingSchema = new Schema({
     default: Date.now
   },
   category: {
-    type: String,
+    type: Schema.Types.ObjectId,
+    ref: 'Category',
     required: true
   }
+}, 
+{
+  id: false
 });
 
-const Listing = mongoose.model('Listing', listingSchema);
+const Listing = model('Listing', listingSchema);
 
 module.exports = Listing;
