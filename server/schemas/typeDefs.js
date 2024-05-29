@@ -2,7 +2,7 @@ const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
   type User {
-    id: ID!
+    _id: ID!
     firstName: String!
     lastName: String!
     username: String!
@@ -11,12 +11,12 @@ const typeDefs = gql`
   }
 
   type Category {
-    id: ID!
+    _id: ID!
     name: String!
   }
 
   type Listing {
-    id: ID!
+    _id: ID!
     title: String!
     owner: String!
     address: String!
@@ -33,7 +33,7 @@ const typeDefs = gql`
   }
 
   type Booking {
-    id: ID!
+    _id: ID!
     listing: Listing!
     startTime: String!
     endTime: String!
@@ -48,10 +48,11 @@ const typeDefs = gql`
   type Query {
     user: User
     categories: [Category]
-    category(id: ID!): Category
+    category(_id: ID!): Category
     listings: [Listing]
-    listing(id: ID!): Listing
-    booking(id: ID!): Booking
+    listing(listingId: ID!): Listing
+    booking(_id: ID!): Booking
+    listingsByCategory(category: String!): [Listing]
   }
 
   type Mutation {

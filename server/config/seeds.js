@@ -30,7 +30,7 @@ db.once('open', async () => {
       capacity: 20,
       rules: 'No smoking or pets allowed. Please clean up after yourselves.',
       amenities: ['Projector', 'Whiteboard', 'WiFi'],
-      category: 'Group Space'
+      category: categories[0]._id
     },
     {
       title: 'Modern Conference Hall',
@@ -44,7 +44,7 @@ db.once('open', async () => {
       capacity: 50,
       rules: 'No food or drinks allowed inside the hall. Smoking strictly prohibited.',
       amenities: ['Audio System', 'Projector', 'Stage'],
-      category: 'Group Space'
+      category: categories[0]._id
     },
     {
       title: 'Rooftop Terrace',
@@ -58,7 +58,7 @@ db.once('open', async () => {
       capacity: 60,
       rules: 'No outside food or drinks allowed. Keep noise levels to a minimum after 10 PM.',
       amenities: ['Outdoor Seating', 'Barbecue Grill', 'City Views'],
-      category: 'Group Space'
+      category: categories[0]._id
     },
     {
       title: 'Community Center',
@@ -72,11 +72,11 @@ db.once('open', async () => {
       capacity: 100,
       rules: 'Respect other users of the facility. Clean up after use.',
       amenities: ['Meeting Rooms', 'Gymnasium', 'Kitchen'],
-      category: 'Group Space'
+      category: categories[0]._id
     },
     {
       title: 'Art Gallery',
-      owner: 'Pedro Gonzalez',
+      owner: 'Sophia Martinez',
       address: '890 Oakwood Drive',
       description: 'An art gallery space suitable for exhibitions, workshops, and events.',
       images: ['', '', ''],
@@ -86,9 +86,9 @@ db.once('open', async () => {
       capacity: 50,
       rules: 'No touching the artworks. Keep noise levels low during exhibitions.',
       amenities: ['Display Walls', 'Lighting Equipment', 'Seating Area'],
-      category: 'Group Space'
+      category: categories[0]._id
     },
-    //the following 5 listings are listing objects for the 'Home Space' category.
+    //the following 5 listings are listing objects for the categories[1]._id category.
     {
       title: 'Modern Loft Apartment',
       owner: 'Jessica Brown',
@@ -101,7 +101,7 @@ db.once('open', async () => {
       capacity: 4,
       rules: 'No smoking indoors. Pets allowed with prior approval.',
       amenities: ['Fully Equipped Kitchen', 'Balcony', 'City Views'],
-      category: 'Home Space'
+      category: categories[1]._id
     },
     {
       title: 'Cosy Cabin Retreat',
@@ -115,11 +115,11 @@ db.once('open', async () => {
       capacity: 2,
       rules: 'No parties or loud noises. Respect the natural surroundings.',
       amenities: ['Fireplace', 'Outdoor Seating', 'Nature Trails'],
-      category: 'Home Space'
+      category: categories[1]._id
     },
     {
       title: 'Luxury Beach House',
-      owner: 'Daisy Pena',
+      owner: 'Olivia Taylor',
       address: '789 Ocean Avenue',
       description: 'A luxurious beach house with direct access to the beach and stunning ocean views.',
       images: ['https://pixabay.com/photos/beach-house-holiday-home-house-349670/', 'https://www.istockphoto.com/de/foto/sunset-beach-pfad-panorama-hintergrund-gm832047798-135379027', ''],
@@ -129,7 +129,7 @@ db.once('open', async () => {
       capacity: 6,
       rules: 'No smoking or pets indoors. Keep noise levels low at night.',
       amenities: ['Private Beach Access', 'Hot Tub', 'Sun Deck'],
-      category: 'Home Space'
+      category: categories[1]._id
     },
     {
       title: 'Charming Cottage',
@@ -143,7 +143,7 @@ db.once('open', async () => {
       capacity: 4,
       rules: 'No smoking indoors. Pets allowed in designated areas only.',
       amenities: ['Garden', 'Fire Pit', 'Porch Swing'],
-      category: 'Home Space'
+      category: categories[1]._id
     },
     {
       title: 'Scenic Mountain Cabin',
@@ -157,7 +157,7 @@ db.once('open', async () => {
       capacity: 3,
       rules: 'No parties or loud noises. Respect the natural environment.',
       amenities: ['Mountain Views', 'Deck', 'Hiking Trails'],
-      category: 'Home Space'
+      category: categories[1]._id
     },
      //the follwoing 5 listings are listing objects for the 'Studio Space' category
   {
@@ -172,7 +172,7 @@ db.once('open', async () => {
     capacity: 2,
     rules: 'No parties or loud noises after 10 PM. Keep the space clean.',
     amenities: ['Kitchenette', 'Private Bathroom', 'WiFi'],
-    category: 'Studio Space'
+    category: categories[2]._id
    },
    {
     title: 'Artistic Studio Loft',
@@ -186,7 +186,7 @@ db.once('open', async () => {
     capacity: 5,
     rules: 'No smoking or pets indoors. Keep noise levels conducive to work.',
     amenities: ['Art Supplies', 'Natural Light', 'Creative Atmosphere'],
-    category: 'Studio Space'
+    category: categories[2]._id
    },
    {
     title: 'Photography Studio',
@@ -200,7 +200,7 @@ db.once('open', async () => {
     capacity: 3,
     rules: 'No food or drinks near photography equipment. Clean up after use.',
     amenities: ['Backdrop System', 'Lighting Equipment', 'Editing Suite'],
-    category: 'Studio Space'
+    category: categories[2]._id
    },
    {
     title: 'Dance Studio',
@@ -214,7 +214,7 @@ db.once('open', async () => {
     capacity: 15,
     rules: 'No outdoor shoes on dance floor. Respect others sharing the space.',
     amenities: ['Mirrored Walls', 'Sprung Floors', 'Sound System'],
-    category: 'Studio Space'
+    category: categories[2]._id
    },
    {
     title: 'Recording Studio',
@@ -228,7 +228,7 @@ db.once('open', async () => {
     capacity: 2,
     rules: 'No food or drinks near recording equipment. Keep noise levels to a minimum.',
     amenities: ['Soundproofing', 'Mixing Console', 'Vocal Booth'],
-    category: 'Studio Space'
+    category: categories[2]._id
    },
    // the following 5 spaces are for the 'study space' category
    {
@@ -243,7 +243,7 @@ db.once('open', async () => {
     capacity: 8,
     rules: 'Maintain silence in the library. No food or drinks near books.',
     amenities: ['Study Desks', 'Bookshelves', 'Reading Lamps'],
-    category: 'Study Space'
+    category: categories[3]._id
    },
    {
     title: 'Cozy Study Nook',
@@ -257,7 +257,7 @@ db.once('open', async () => {
     capacity: 4,
     rules: 'No loud noises. Keep the space tidy and organized.',
     amenities: ['Comfy Chairs', 'Study Tables', 'Large Windows'],
-    category: 'Study Space'
+    category: categories[3]._id
    },
    {
     title: 'Private Study Room',
@@ -271,7 +271,7 @@ db.once('open', async () => {
     capacity: 2,
     rules: 'Respect others\' privacy. Keep noise levels to a minimum.',
     amenities: ['Desk', 'Chair', 'Quiet Environment'],
-    category: 'Study Space'
+    category: categories[3]._id
    },
    {
     title: 'Modern Coworking Space',
@@ -279,13 +279,13 @@ db.once('open', async () => {
     address: '101 Workspace Avenue',
     description: 'A modern coworking space with flexible seating options and high-speed internet.',
     images: ['', '', ''],
-    pricePerHour: 65.00,
+    pricePerHour: 50.00,
     availability: true,
     rating: 4.8,
     capacity: 10,
     rules: 'Respect others\' workspace. Keep noise levels appropriate for work.',
     amenities: ['Shared Desks', 'Meeting Rooms', 'High-Speed Internet'],
-    category: 'Study Space'
+    category: categories[3]._id
    },
    {
     title: 'University Study Lounge',
@@ -299,9 +299,14 @@ db.once('open', async () => {
     capacity: 20,
     rules: 'Keep noise levels appropriate for studying. Respect other students\' space.',
     amenities: ['Study Carrels', 'Group Study Areas', 'Quiet Environment'],
-    category: 'Study Space'
+    category: categories[3]._id
    },
   ]);
+ 
+ 
+ 
+ 
+ 
  
 
   console.log('Listings seeded');
