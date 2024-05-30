@@ -12,6 +12,8 @@ import StudioSpace from './pages/StudioSpace.jsx';
 import StudySpace from './pages/StudySpace.jsx';
 import './index.css'
 
+
+
 const router = createBrowserRouter([
     {
         path: '/',

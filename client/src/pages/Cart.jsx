@@ -1,6 +1,8 @@
 // Cart.jsx
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useQuery } from '@apollo/client';
+
 
 function Cart() {
     // Example cart items (replace with actual cart items from your application state)
