@@ -3,11 +3,9 @@ function About() {
         <div className={"m-4"}>
             <div>
                 <h1>About Quick Space</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                    culpa qui officia deserunt mollit anim id est laborum.</p>
+                <p>Quick Space is a short-term rental app to accomodate your needs. Whether it be sleeping quarters because your flight arrived 
+                    at 6am but checkin is at 3pm, or a group space that for a birthday party. We have it all here at your fingertips.
+                </p>
 
             </div>
             <div className={"text-white"}>
