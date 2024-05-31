@@ -11,6 +11,7 @@ import Profile from "./pages/Profile.jsx";
 import StudioSpace from './pages/StudioSpace.jsx';
 import StudySpace from './pages/StudySpace.jsx';
 import './index.css'
+import Login from './components/Login.jsx'
 
 
 
@@ -52,6 +53,10 @@ const router = createBrowserRouter([
             {
                 path: "/study-space",
                 element: <StudySpace/>
+            },
+            {
+                path: "/login",
+                element: <Login />
             },
         ]
     }
