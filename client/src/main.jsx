@@ -13,8 +13,6 @@ import StudySpace from './pages/StudySpace.jsx';
 import './index.css'
 import Login from './components/Login.jsx'
 
-
-
 const router = createBrowserRouter([
     {
         path: '/',

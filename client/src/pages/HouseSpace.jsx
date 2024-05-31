@@ -1,6 +1,7 @@
-import Button from 'react-bootstrap/Button';
+
 import Card from 'react-bootstrap/Card';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Link } from 'react-router-dom';
 
 const cardArray = [
   {
@@ -15,10 +16,12 @@ const cardArray = [
 
 function HouseSpace() {
   return (
-    <div className="home-cards">
+    <div>
+      <h1 className='font-bold m-6 text-3xl'>House Spaces</h1>
+      <div className={"flex flex-wrap justify-evenly"}>
       {cardArray.map((card) => {
         return (
-          <div className="individual-card" key={card.id}>
+          <div className={"my-4"} key={card.id}>
             <Card style={{ width: '18rem' }}>
               <Card.Img variant="top" src={card.imageSrc} style={{
                 minHeight: "250px",
@@ -26,14 +29,21 @@ function HouseSpace() {
               }} />
               <Card.Body>
                 <Card.Title style={{ color: 'white' }}>{card.title}</Card.Title>
-                <Card.Title style={{ color: 'white' }}>{card.price}</Card.Title>
                 <Card.Text style={{ minHeight: "150px" }}>{card.text}</Card.Text>
-                <Button variant="primary">{card.buttonText}</Button>
-              </Card.Body>
+                <Link to={card.link}>
+                  <button
+                    type="button"
+                    className="rounded-md bg-sky-600 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-sky-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                  >
+                    {card.buttonText}
+                  </button>
+                </Link>
+                </Card.Body>
             </Card>
           </div>
         )
       })}
+      </div>
     </div>
   );
 }
