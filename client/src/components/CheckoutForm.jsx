@@ -20,7 +20,7 @@ function CheckoutForm() {
 
     return (
         <form onSubmit={handleSubmit}>
-            <button className="header-li" type="submit">Checkout</button>
+            <button  className="header-li" type="submit">Checkout</button>
         </form>
     );
 }

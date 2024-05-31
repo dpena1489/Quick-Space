@@ -24,6 +24,7 @@ function GroupSpace() {
   //     price: price,
   //     text: text,
   //     buttonText: "See Details"
+  // link: "/details"
   //   },
   // ]
 

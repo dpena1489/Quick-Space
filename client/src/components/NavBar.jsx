@@ -15,7 +15,7 @@ export default function NavBar() {
 
     <ul className='flex font-bold text-xl'>
         <li className={'mx-10'}><Link to="/profile" className={"text-white no-underline"}>Profile</Link></li>
-        <li className={'mx-10'}><CheckoutForm/></li>
+        {/* <li className={'mx-10'}><CheckoutForm/></li> */}
         <li className={'mx-10'}><Link to="/cart" className={"text-white no-underline"}>Cart</Link></li>
         <li className={'mx-10'}><Link to="/login" className={"text-white no-underline"}>Login</Link></li>
     </ul>
