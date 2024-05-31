@@ -14,11 +14,11 @@ export default function NavBar() {
         />
     </Link>
     
-    <ul className='flex font-bold text-xl'>
-        <li className={'mx-10'}><Link to="/profile" className={"text-white no-underline"}>Profile</Link></li>
+    <ul className='flex font-bold text-xl md: flex-col'>
+        <li className={'mx-10 md: text-4xl m-2'}><Link to="/profile" className={"text-white no-underline"}>Profile</Link></li>
         {/* <li className={'mx-10'}><CheckoutForm/></li> */}
-        <li className={'mx-10'}><Link to="/cart" className={"text-white no-underline"}>Cart</Link></li>
-        <li className={'mx-10'}><Link to="/login" className={"text-white no-underline"}>Login</Link></li>
+        <li className={'mx-10 md: text-4xl m-2'}><Link to="/cart" className={"text-white no-underline"}>Cart</Link></li>
+        <li className={'mx-10 md: text-4xl m-2'}><Link to="/login" className={"text-white no-underline"}>Login</Link></li>
     </ul>
     
 </header>
