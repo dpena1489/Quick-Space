@@ -22,17 +22,14 @@ const router = createBrowserRouter([
         children: [
             {
                 path: "/about",
-                index: true,
                 element: <About/>
             },
             {
                 path: "/cart",
-                index: true,
                 element: <Cart/>
             },
             {
                 path: "/group-space",
-                index: true,
                 element: <GroupSpace/>
             },
             {
@@ -41,22 +38,19 @@ const router = createBrowserRouter([
             },
             {
                 path: "/house-space",
-                index: true,
+
                 element: <HouseSpace/>
             },
             {
                 path: "/profile",
-                index: true,
                 element: <Profile/>
             },
             {
                 path: "/studio-space",
-                index: true,
                 element: <StudioSpace/>
             },
             {
                 path: "/study-space",
-                index: true,
                 element: <StudySpace/>
             },
         ]
