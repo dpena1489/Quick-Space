@@ -2,6 +2,9 @@
 import Card from 'react-bootstrap/Card';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { useState } from 'react';
 // import { useQuery } from '@apollo/client';
 // import { QUERY_GROUPSPACE } from '../../utils/queries';
 // import properties from ''
@@ -28,10 +31,14 @@ function GroupSpace() {
   //   },
   // ]
 
-
+  const [startDate, setStartDate] = useState(new Date());
     return (
       <div>
+      <div className='text-center'>
       <h1 className='font-bold m-6 text-3xl'>Group Spaces</h1>
+      <h2 className='mb-2'>Please select a date and time:</h2>
+      <DatePicker className='border-2 white' selected={startDate} showTimeSelect onChange={(date) => setStartDate(date)} />
+      </div>
       <div className={"flex flex-wrap justify-evenly"}>
       {cardArray.map((card) => {
         return (
