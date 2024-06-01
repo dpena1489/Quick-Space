@@ -15,10 +15,6 @@ export default function ListProperties() {
     // 
     const listingData = data?.listingsByCategory || []
 
-    console.log(listingData);
-
-
-
 
     return (
         <>

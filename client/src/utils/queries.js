@@ -36,11 +36,14 @@ query Categories {
 
 
 export const GET_CHECKOUT = gql`
-query checkout($listingId: ID!, $phQuantity: Int!) {
-    checkout(listingId: $listingId, phQuantity: $phQuantity) {
-      session
-    }
-  }`
+query checkout($listingId: ID!, $startTime: String!, $endTime: String!) {
+  checkout(listingId: $listingId, startTime: $startTime, endTime: $endTime) {
+    session
+  }
+}
+
+
+`
 
   export const GET_LISTING = gql`
   query listing($listingId: ID!) {
