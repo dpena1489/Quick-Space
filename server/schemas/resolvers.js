@@ -34,10 +34,10 @@ const resolvers = {
     },
 
     listingsByCategory: async (parent, { category }, context) => {
-      if (context.user) {
+      // if (context.user) {
         return await Listing.find({ category: category }).populate('category');
-      }
-      throw AuthenticationError
+      // }
+      // throw AuthenticationError
     },
 
     booking: async (parent, { _id }, context) => {

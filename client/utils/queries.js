@@ -1,52 +1,39 @@
 import { gql } from '@apollo/client';
 
-// export const QUERY_GROUPSPACE = gql`
-//   query listings {
-//        category[0]._id {
-//         _id
-//         imageSrc
-//         title
-//         price
-//         text
-//     }
-//   }
-// `;
-
-export const QUERY_HOUSESPACE = gql`
-  query getHouseListings {
-    listings {
-        _id
-        imageSrc
-        title
-        price
-        text
+export const QUERY_LISTINGS_BY_CATEGORY = gql`
+query listingsByCategory($category: String!) {
+  listingsByCategory(category: $category) {
+    _id
+    title
+    owner
+    address
+    description
+    images
+    pricePerHour
+    availability
+    rating
+    capacity
+    rules
+    amenities
+    createdAt
+    category {
+      _id
+      name
     }
   }
+}
 `;
 
-export const QUERY_STUDIOSPACE = gql`
-  query getStudioListings {
-    listings {
-        _id
-        imageSrc
-        title
-        price
-        text
-    }
+export const QUERY_CATEGORIES = gql`
+query Categories {
+  categories {
+    _id
+    name
   }
-`;
+}
+`
 
-export const QUERY_STUDYSPACE = gql`
-  query getStudyListings {
-    listings {
-        _id
-        imageSrc
-        title
-        price
-        text
-    }
-  }
-`;
+
 
 export const GET_CHECKOUT = gql`
 query checkout($listingId: ID!, $phQuantity: Int!) {
@@ -54,3 +41,27 @@ query checkout($listingId: ID!, $phQuantity: Int!) {
       session
     }
   }`
+
+  export const GET_LISTING = gql`
+  query listing($listingId: ID!) {
+    listing(listingId: $listingId) {
+      _id
+      title
+      owner
+      address
+      description
+      images
+      pricePerHour
+      availability
+      rating
+      capacity
+      rules
+      amenities
+      createdAt
+      category {
+        _id
+        name
+      }
+    }
+  }
+  `
