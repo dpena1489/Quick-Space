@@ -36,23 +36,10 @@ const router = createBrowserRouter([
                 path: "/:id",
                 element: Auth.loggedIn() ? <ListProperties /> : <Login />
             },
-            // {
-            //     path: "/house-space",
-
-            //     element: <HouseSpace/>
-            // },
             {
                 path: "/profile",
                 element: <Profile />
             },
-            // {
-            //     path: "/studio-space",
-            //     element: <StudioSpace/>
-            // },
-            // {
-            //     path: "/study-space",
-            //     element: <StudySpace/>
-            // },
             {
                 path: "/login",
                 element: <Login />

@@ -6,7 +6,6 @@ import CardRatingStars from '../components/CardRatingStars';
 import DateTimePicker from '../components/DateTimePicker';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-
 const CardImageCarousels = ({ images }) => {
   const numberOfImages = images.length;
   const [imgOn, setImgOn] = useState(0);
@@ -48,7 +47,6 @@ const CardImageCarousels = ({ images }) => {
   )
 }
 
-
 function ShowListings({ pageTitle, listingData }) {
   return (
     <div>
@@ -68,7 +66,7 @@ function ShowListings({ pageTitle, listingData }) {
                   <Card.Title>{card.title}</Card.Title>
                   <Card.Text style={{ minHeight: "150px" }}>{card.description}</Card.Text>
                   <CardRatingStars starRating={card.rating} />
-                  <Link to={card.link}>
+                  <Link to={`/details/${card._id}`}>
                     <button
                       type="button"
                       className="rounded-md bg-sky-600 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-sky-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
