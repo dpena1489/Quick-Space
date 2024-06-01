@@ -1,26 +1,55 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/20/solid'
 import Card from 'react-bootstrap/Card';
 import CardRatingStars from '../components/CardRatingStars';
 import DateTimePicker from '../components/DateTimePicker';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
-const CardImageCarousels = ({images}) => {
-  const [imgSrc, setImageSrc] = useState(images[0]);
+const CardImageCarousels = ({ images }) => {
+  const numberOfImages = images.length;
+  const [imgOn, setImgOn] = useState(0);
+
+  const updateImage = (value) => {
+
+    if(value === "NEXT" && imgOn < numberOfImages -1) {
+      setImgOn(currentImage => currentImage + 1)
+    } else if (value === "PREVIOUS" && imgOn > 0) {
+      setImgOn(currentImage => currentImage - 1)
+    }
+  }
 
   return (
     <div>
-      <Card.Img variant="top" src={imgSrc} style={{
+      <Card.Img variant="top" src={images[imgOn]} style={{
         minHeight: "250px",
         maxHeight: "250px"
       }} />
+      <span className="isolate flex justify-between rounded-md shadow-sm">
+        <button
+          type="button"
+          className={`relative inline-flex items-center rounded-l-md bg-red px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 focus:z-10`}
+          onClick={() => updateImage("PREVIOUS")}
+        >
+          <span className="sr-only">Previous</span>
+          <ChevronLeftIcon className="h-5 w-5" aria-hidden="true" />
+        </button>
+        <button
+          type="button"
+          className="relative -ml-px inline-flex items-center rounded-r-md bg-white px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-10"
+          onClick={() => updateImage("NEXT")}
+        >
+          <span className="sr-only">Next</span>
+          <ChevronRightIcon className="h-5 w-5" aria-hidden="true" />
+        </button>
+      </span>
     </div>
   )
 }
 
 
-function ShowListings({pageTitle, listingData}) {
+function ShowListings({ pageTitle, listingData }) {
   return (
     <div>
       <div className='text-center'>
@@ -34,7 +63,7 @@ function ShowListings({pageTitle, listingData}) {
           return (
             <div className={"my-4"} key={card.id}>
               <Card style={{ width: '18rem' }}>
-                <CardImageCarousels images={card.images}/>
+                <CardImageCarousels images={card.images} />
                 <Card.Body>
                   <Card.Title>{card.title}</Card.Title>
                   <Card.Text style={{ minHeight: "150px" }}>{card.description}</Card.Text>
