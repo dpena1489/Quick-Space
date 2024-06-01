@@ -1,19 +1,32 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { useQuery } from '@apollo/client';
+import { QUERY_GROUPSPACE } from '../../utils/queries';
+// import properties from ''
 
-const cardArray = [
-  {
-    id: "1",
-    imageSrc: "",
-    title: "Chicago Apartment",
-    price: "$40 p/hr",
-    text: "A charming studio apartment on Chicago's lakefront.",
-    buttonText: "See Details"
-  },
-]
+
 
 function GroupSpace() {
+  const {data} = useQuery(QUERY_GROUPSPACE);
+  const title = data?.title;
+  const img = data?.imgages[0];
+  const price = data?.pricePerHour;
+  const text = data?.description;
+  const id = data?.categories[0]._id;
+
+  const cardArray = [
+    {
+      id: id,
+      imageSrc: img,
+      title: title,
+      price: price,
+      text: text,
+      buttonText: "See Details"
+    },
+  ]
+
+
     return (
         <div className="home-cards">
           {cardArray.map((card) => {
@@ -36,7 +49,7 @@ function GroupSpace() {
           })}
         </div>
       );
-};
+}
      
 
 
