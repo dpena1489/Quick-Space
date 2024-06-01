@@ -1,57 +1,87 @@
-import { Link } from 'react-router-dom';
-import Card from 'react-bootstrap/Card';
-import DateTimePicker from '../components/DateTimePicker';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import ShowListings from '../components/ShowListings';
 
-const cardArray = [
+// Mocking api while someone finds out why its not working. 
+const StudioSpacesMockedData = [
   {
     id: "1",
-    imageSrc: "",
-    title: "Chicago Apartment",
-    price: "$40 p/hr",
-    text: "A charming studio apartment on Chicago's lakefront.",
-    buttonText: "See Details",
-    link: "/details"
-  },
+    title: 'Cozy Home Studio',
+    owner: 'Jane Smith',
+    address: '456 Oak Avenue',
+    description: 'A cozy studio apartment perfect for solo travelers or couples.',
+    images: ['', '', ''],
+    pricePerHour: 50.00,
+    availability: true,
+    rating: 1.8,
+    capacity: 2,
+    rules: 'No parties or loud noises after 10 PM. Keep the space clean.',
+    amenities: ['Kitchenette', 'Private Bathroom', 'WiFi'],
+    // category: categories[2]._id
+   },
+   {
+    id: "2",
+    title: 'Artistic Studio Loft',
+    owner: 'Grace Lee',
+    address: '123 Art Avenue',
+    description: 'An artistic studio loft designed for creativity and inspiration.',
+    images: ['', '', ''],
+    pricePerHour: 60.00,
+    availability: true,
+    rating: 3.7,
+    capacity: 5,
+    rules: 'No smoking or pets indoors. Keep noise levels conducive to work.',
+    amenities: ['Art Supplies', 'Natural Light', 'Creative Atmosphere'],
+    // category: categories[2]._id
+   },
+   {
+    id: "3",
+    title: 'Photography Studio',
+    owner: 'James Smith',
+    address: '456 Shutter Street',
+    description: 'A fully-equipped photography studio for professional shoots and creative projects.',
+    images: ['', '', ''],
+    pricePerHour: 80.00,
+    availability: true,
+    rating: 4.9,
+    capacity: 3,
+    rules: 'No food or drinks near photography equipment. Clean up after use.',
+    amenities: ['Backdrop System', 'Lighting Equipment', 'Editing Suite'],
+    // category: categories[2]._id
+   },
+   {
+    id: "4",
+    title: 'Dance Studio',
+    owner: 'Emma Johnson',
+    address: '789 Dance Avenue',
+    description: 'A spacious dance studio with mirrored walls and sprung floors for rehearsals and classes.',
+    images: ['', '', ''],
+    pricePerHour: 70.00,
+    availability: true,
+    rating: 2.8,
+    capacity: 15,
+    rules: 'No outdoor shoes on dance floor. Respect others sharing the space.',
+    amenities: ['Mirrored Walls', 'Sprung Floors', 'Sound System'],
+    // category: categories[2]._id
+   },
+   {
+    id: "5",
+    title: 'Recording Studio',
+    owner: 'Sarah Nalepa',
+    address: '101 Music Street',
+    description: 'A professional recording studio equipped with state-of-the-art audio equipment.',
+    images: ['', '', ''],
+    pricePerHour: 100.00,
+    availability: true,
+    rating: 5.9,
+    capacity: 2,
+    rules: 'No food or drinks near recording equipment. Keep noise levels to a minimum.',
+    amenities: ['Soundproofing', 'Mixing Console', 'Vocal Booth'],
+    // category: categories[2]._id
+   },
 ]
 
 function StudioSpace() {
   return (
-    <div>
-      <div className='text-center'>
-        <h1 className='font-bold m-6 text-3xl'>Studio Spaces</h1>
-        <h2 className='mb-2'>Please select a date and time:</h2>
-        <DateTimePicker />
-      </div>
-
-      <div className={"flex flex-wrap justify-evenly"}>
-        {cardArray.map((card) => {
-          return (
-            <div className={"my-4"} key={card.id}>
-              <Card style={{ width: '18rem' }}>
-                <Card.Img variant="top" src={card.imageSrc} style={{
-                  minHeight: "250px",
-                  maxHeight: "250px"
-                }} />
-                <Card.Body>
-                  <Card.Title style={{ color: 'white' }}>{card.title}</Card.Title>
-                  <Card.Text style={{ minHeight: "150px" }}>{card.text}</Card.Text>
-                  <Link to={card.link}>
-                    <button
-                      type="button"
-                      className="rounded-md bg-sky-600 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-sky-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                    >
-                      {card.buttonText}
-                    </button>
-                  </Link>
-                </Card.Body>
-              </Card>
-            </div>
-          )
-        })}
-      </div>
-
-    </div>
+    <ShowListings pageTitle={"Studio Spaces"} listingData={StudioSpacesMockedData}/>
   );
 };
 
