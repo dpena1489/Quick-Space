@@ -15,6 +15,7 @@ import './index.css'
 import Login from './components/Login.jsx'
 import CheckoutForm from './components/CheckoutForm.jsx';
 import ListProperties from './components/ListProperties.jsx';
+import Signup from './components/Signup.jsx';
 
 const router = createBrowserRouter([
     {
@@ -67,6 +68,10 @@ const router = createBrowserRouter([
                 path: "/checkout-form",
                 element: <CheckoutForm />
             },
+            {
+                path: '/signup',
+                element: <Signup/>
+            }
         ]
     }
 ])

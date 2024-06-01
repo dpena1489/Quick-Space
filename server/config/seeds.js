@@ -23,7 +23,7 @@ db.once('open', async () => {
       owner: 'John Doe',
       address: '123 Main Street',
       description: 'A large meeting room suitable for group discussions and presentations.',
-      images: ['https://pixabay.com/photos/lake-cabin-mountains-reflection-5757938/', 'https://pixabay.com/photos/green-meadow-mountains-switzerland-8534434/'],
+      images: ['https://www.apartments.com/blog/sites/default/files/styles/x_large_hq/public/image/2023-06/ParkLine-apartment-in-Miami-FL.jpg?itok=kQmw64UU', 'https://pixabay.com/photos/green-meadow-mountains-switzerland-8534434/'],
       pricePerHour: 50.00,
       availability: true,
       rating: 4.5,

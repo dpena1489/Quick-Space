@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { loadStripe } from '@stripe/stripe-js';
-import { GET_CHECKOUT } from '../../utils/queries'
+import { GET_CHECKOUT } from '../utils/queries'
 import { useQuery } from '@apollo/client';
 
 const stripePromise = loadStripe('pk_test_51PHFPXLGaswMygELxrhy96BkMWlBhJx0O8rnZesaIy0AXZ4P4YXikepCZvc9mMB3idrXx34OaieN0qq8JDgK5oFJ00vG97SXTf');
