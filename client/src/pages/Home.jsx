@@ -1,11 +1,16 @@
 import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import { useQuery } from '@apollo/client';
+import { QUERY_CATEGORIES } from '../../utils/queries'
+import React, { useEffect, useState } from 'react';
 
 
 function Home() {
-  
+
+  const { loading, error, data } = useQuery(QUERY_CATEGORIES);
+  const [cards, setCards] = useState([]);
+
 
 
 
