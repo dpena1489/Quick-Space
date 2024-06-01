@@ -12,7 +12,7 @@ function CardRatingStars({ starRating }) {
   
   
     return (
-      <Card.Text className='flex text-blue'>
+      <Card.Text className='flex text-blue my-3'>
         {solidStarsArr.map((_, index) => <StarIconSolid key={index} className="h-6 w-6 text-blue"/>)}
         {emptyStarsArr.map((_, index) => <StarIconOutline key={index} className="h-6 w-6 text-blue"/>)}
       </Card.Text>

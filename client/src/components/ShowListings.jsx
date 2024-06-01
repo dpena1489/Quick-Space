@@ -1,8 +1,24 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import CardRatingStars from '../components/CardRatingStars';
 import DateTimePicker from '../components/DateTimePicker';
 import 'bootstrap/dist/css/bootstrap.min.css';
+
+
+const CardImageCarousels = ({images}) => {
+  const [imgSrc, setImageSrc] = useState(images[0]);
+
+  return (
+    <div>
+      <Card.Img variant="top" src={imgSrc} style={{
+        minHeight: "250px",
+        maxHeight: "250px"
+      }} />
+    </div>
+  )
+}
+
 
 function ShowListings({pageTitle, listingData}) {
   return (
@@ -18,10 +34,7 @@ function ShowListings({pageTitle, listingData}) {
           return (
             <div className={"my-4"} key={card.id}>
               <Card style={{ width: '18rem' }}>
-                <Card.Img variant="top" src={card.images[0]} style={{
-                  minHeight: "250px",
-                  maxHeight: "250px"
-                }} />
+                <CardImageCarousels images={card.images}/>
                 <Card.Body>
                   <Card.Title>{card.title}</Card.Title>
                   <Card.Text style={{ minHeight: "150px" }}>{card.description}</Card.Text>
