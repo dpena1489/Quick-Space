@@ -16,45 +16,34 @@ function Home() {
 
   const cardArray = [
     {
-      id: '665a9558b9392d352719222b',
-      imageSrc: "../../images/Group_Space.jpeg",
-      title: "Group Space",
-      text: "Find a space to accommodate your group. From baby showers to community meetings, find a space to host the perfect event!",
-      buttonText: "See Group Spaces",
-      link: "/group-space",
-
+      imageSrc: '../../images/Group_Space.jpeg',
+      title: 'Group Space',
+      text: 'Find a space to accommodate your group. From baby showers to community meetings, find a space to host the perfect event!',
+      buttonText: 'See Group Spaces',
+      link: '/group-space',
     },
     {
-      id:
-        "665a9558b9392d352719222c",
-      imageSrc: "../../images/House_Space.jpeg",
-      title: "House Space",
-      text: "Find a space to accommodate you or a small group. The house space is a good option for an individual or group searching for last minute accomodation.",
-      buttonText: "See House Spaces",
-      link: "/house-space",
-
+      imageSrc: '../../images/House_Space.jpeg',
+      title: 'House Space',
+      text: 'Find a space to accommodate you or a small group. The house space is a good option for an individual or group searching for last minute accommodation.',
+      buttonText: 'See House Spaces',
+      link: '/house-space',
     },
     {
-      id: "665a9558b9392d352719222d",
-      imageSrc: "../../images/studio_space2.jpeg",
-      title: "Studio Space",
-      text: "Need a quite space to work on your music? Studio space can help you find the perfect sapce near you.",
-      buttonText: "See Studio Spaces",
-      link: "/studio-space",
-
+      imageSrc: '../../images/studio_space2.jpeg',
+      title: 'Studio Space',
+      text: 'Need a quiet space to work on your music? Studio space can help you find the perfect space near you.',
+      buttonText: 'See Studio Spaces',
+      link: '/studio-space',
     },
     {
-      id: "665a9558b9392d352719222e",
-      imageSrc: "../../images/study_space.jpeg",
-      title: "Study Space",
+      imageSrc: '../../images/study_space.jpeg',
+      title: 'Study Space',
       text: "Some quick example text to build on the card title and make up the bulk of the card's content.",
-      buttonText: "See Study Spaces",
-      link: "/study-space",
-
-    }
-  ]
-
-
+      buttonText: 'See Study Spaces',
+      link: '/study-space',
+    },
+  ];
 
 
   return (
