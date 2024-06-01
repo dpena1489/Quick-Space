@@ -14,6 +14,7 @@ import Details from './components/Details.jsx';
 import './index.css'
 import Login from './components/Login.jsx'
 import CheckoutForm from './components/CheckoutForm.jsx';
+import ListProperties from './components/ListProperties.jsx';
 
 const router = createBrowserRouter([
     {
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
         element: <App/>,
         errorElement: <h1 className="display-2">Wrong page!</h1>,
         children: [
+            {
+                index: true,
+                element: <Home/>
+            },
             {
                 path: "/about",
                 element: <About/>
@@ -30,36 +35,32 @@ const router = createBrowserRouter([
                 element: <Cart/>
             },
             {
-                path: "/group-space",
-                element: <GroupSpace/>
+                path: "/:id",
+                element: <ListProperties />
             },
-            {
-                index: true,
-                element: <Home/>
-            },
-            {
-                path: "/house-space",
+            // {
+            //     path: "/house-space",
 
-                element: <HouseSpace/>
-            },
+            //     element: <HouseSpace/>
+            // },
             {
                 path: "/profile",
                 element: <Profile/>
             },
-            {
-                path: "/studio-space",
-                element: <StudioSpace/>
-            },
-            {
-                path: "/study-space",
-                element: <StudySpace/>
-            },
+            // {
+            //     path: "/studio-space",
+            //     element: <StudioSpace/>
+            // },
+            // {
+            //     path: "/study-space",
+            //     element: <StudySpace/>
+            // },
             {
                 path: "/login",
                 element: <Login />
             },
             {
-                path: "/details",
+                path: "/details/:id",
                 element: <Details />
             },
             {
