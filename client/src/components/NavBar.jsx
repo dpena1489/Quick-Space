@@ -1,6 +1,7 @@
 import logo from '../../images/logo2.jpg'
 import { Link } from 'react-router-dom';
 import CheckoutForm from './CheckoutForm.jsx';
+import Auth from '../utils/auth';
 
 export default function NavBar() {
   return (
@@ -18,7 +19,8 @@ export default function NavBar() {
         <li className={'mx-10 md: text-4xl m-2'}><Link to="/profile" className={"text-white no-underline"}>Profile</Link></li>
         {/* <li className={'mx-10'}><CheckoutForm/></li> */}
         <li className={'mx-10 md: text-4xl m-2'}><Link to="/cart" className={"text-white no-underline"}>Cart</Link></li>
-        <li className={'mx-10 md: text-4xl m-2'}><Link to="/login" className={"text-white no-underline"}>Login</Link></li>
+        {Auth.loggedIn() ? (<li className={'mx-10 md: text-4xl m-2'}><Link onClick={Auth.logout} className={"text-white no-underline"}>Logout</Link></li>) : (<li className={'mx-10 md: text-4xl m-2'}><Link to="/login" className={"text-white no-underline"}>Login</Link></li>)}
+        
     </ul>
     
 </header>

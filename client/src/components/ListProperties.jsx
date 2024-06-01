@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
 
 import { useQuery } from "@apollo/client";
-import { QUERY_LISTINGS_BY_CATEGORY } from "../../utils/queries";
+import { QUERY_LISTINGS_BY_CATEGORY } from "../utils/queries";
 
 export default function ListProperties() {
     const { id } = useParams()
@@ -34,12 +34,12 @@ export default function ListProperties() {
                         <Card.Body>
                             <Card.Title style={{ color: 'white' }}>{card.title}</Card.Title>
                             <Card.Text style={{ minHeight: "150px" }}>{card.description}</Card.Text>
-                            <Link to={`/details/${card.id}`}>
+                            <Link to={`/details/${card._id}`}>
                                 <button
                                     type="button"
                                     className="rounded-md bg-sky-600 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-sky-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                                 >
-                                    {card.name}
+                                    {card.title}
                                 </button>
                             </Link>
                         </Card.Body>

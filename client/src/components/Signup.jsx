@@ -4,22 +4,25 @@ import { useMutation } from '@apollo/client';
 import Auth from '../utils/auth';
 import { ADD_USER } from '../utils/mutations';
 
-function Signup(props) {
-  const [formState, setFormState] = useState({ email: '', password: '' });
-  const [addUser] = useMutation(ADD_USER);
+function Signup() {
+  const [formState, setFormState] = useState({ 
+    email: '', 
+    password: '' , 
+    firstName: '',
+    lastName: '',
+    username: ''
+  });
+  const [createUser] = useMutation(ADD_USER);
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    const mutationResponse = await addUser({
+    const {data} = await createUser({
       variables: {
-        email: formState.email,
-        password: formState.password,
-        firstName: formState.firstName,
-        lastName: formState.lastName,
+        ...formState
       },
     });
-    const token = mutationResponse.data.addUser.token;
-    Auth.login(token);
+   
+    Auth.login(data.createUser.token);
   };
 
   const handleChange = (event) => {
@@ -41,8 +44,8 @@ function Signup(props) {
           <input
             placeholder="First"
             name="firstName"
-            type="firstName"
-            id="firstName"
+            type="text"
+           value={formState.firstName}
             onChange={handleChange}
           />
         </div>
@@ -51,8 +54,18 @@ function Signup(props) {
           <input
             placeholder="Last"
             name="lastName"
-            type="lastName"
-            id="lastName"
+            type="text"
+            value={formState.lastName}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="flex-row space-between my-2">
+          <label htmlFor="username">Username:</label>
+          <input
+            placeholder="username"
+            name="username"
+            type="text"
+            value={formState.username}
             onChange={handleChange}
           />
         </div>
@@ -62,7 +75,7 @@ function Signup(props) {
             placeholder="youremail@test.com"
             name="email"
             type="email"
-            id="email"
+           value={formState.email}
             onChange={handleChange}
           />
         </div>
@@ -72,7 +85,7 @@ function Signup(props) {
             placeholder="******"
             name="password"
             type="password"
-            id="pwd"
+           value={formState.password}
             onChange={handleChange}
           />
         </div>

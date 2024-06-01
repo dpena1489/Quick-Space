@@ -1,21 +1,24 @@
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useState } from 'react';
+import { useQuery } from "@apollo/client";
+import { GET_LISTING } from "../utils/queries";
 
 function Details() {
     const [startDate, setStartDate] = useState(new Date());
+    const { id } = useParams()
 
-    const propertyDetails = {
-        title: "Property title",
-        description: "Property description",
-        price: "Property price",
-        images: [
-            "image1",
-            "image2",
-            "image3"
-        ]
-    }
+    const { data } = useQuery(GET_LISTING, {
+        variables: { listingId: id }
+    })
+    // 
+    const listingData = data?.listing || {}
+
+    console.log(listingData);
+    
+
+    
     return (
         <div>
 
@@ -23,15 +26,16 @@ function Details() {
 
             <div style={{ display: 'flex' }}>
                 <div style={{ width: '50%' }}>
-                    <img src={propertyDetails.images[0]} alt="property" />
-                    <img src={propertyDetails.images[1]} alt="property" />
-                    <img src={propertyDetails.images[2]} alt="property" />
+                    {listingData?.images?.map((image) =>(
+                        <img src={image} alt='property' style={{ width: '50%', margin: '2%' }} />
+                    
+                    ))}
                 </div>
                 <div style={{ width: '50%' }}>
                     <h1 className='font-bold m-6 text-3xl'>Property Details</h1>
-                    <p>{propertyDetails.title}</p>
-                    <p>{propertyDetails.description}</p>
-                    <p>{propertyDetails.price}</p>
+                    <p>{listingData.title}</p>
+                    <p>{listingData.description}</p>
+                    <p>{listingData.pricePerHour} per hour</p>
                     <div>
                         <div>
 
