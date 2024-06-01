@@ -4,18 +4,18 @@ import {createBrowserRouter, RouterProvider} from 'react-router-dom';
 import App from './App.jsx';
 import About from "./pages/About.jsx";
 import Cart from './pages/Cart.jsx'
-import GroupSpace from './pages/GroupSpace.jsx';
+
 import Home from './pages/Home.jsx';
-import HouseSpace from './pages/HouseSpace.jsx';
+
 import Profile from "./pages/Profile.jsx";
-import StudioSpace from './pages/StudioSpace.jsx';
-import StudySpace from './pages/StudySpace.jsx';
 import Details from './components/Details.jsx';
 import './index.css'
 import Login from './components/Login.jsx'
 import CheckoutForm from './components/CheckoutForm.jsx';
 import ListProperties from './components/ListProperties.jsx';
 import Signup from './components/Signup.jsx';
+
+import Auth from './utils/auth.js'
 
 const router = createBrowserRouter([
     {
@@ -37,7 +37,7 @@ const router = createBrowserRouter([
             },
             {
                 path: "/:id",
-                element: <ListProperties />
+                element: Auth.loggedIn() ? <ListProperties /> : <Login />
             },
             // {
             //     path: "/house-space",
@@ -62,7 +62,7 @@ const router = createBrowserRouter([
             },
             {
                 path: "/details/:id",
-                element: <Details />
+                element: Auth.loggedIn() ? <Details /> : <Login />
             },
             {
                 path: "/checkout-form",
