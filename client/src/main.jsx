@@ -10,10 +10,10 @@ import HouseSpace from './pages/HouseSpace.jsx';
 import Profile from "./pages/Profile.jsx";
 import StudioSpace from './pages/StudioSpace.jsx';
 import StudySpace from './pages/StudySpace.jsx';
+import Details from './components/Details.jsx';
 import './index.css'
 import Login from './components/Login.jsx'
-
-
+import CheckoutForm from './components/CheckoutForm.jsx';
 
 const router = createBrowserRouter([
     {
@@ -57,6 +57,14 @@ const router = createBrowserRouter([
             {
                 path: "/login",
                 element: <Login />
+            },
+            {
+                path: "/details",
+                element: <Details />
+            },
+            {
+                path: "/checkout-form",
+                element: <CheckoutForm />
             },
         ]
     }

@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "@apollo/client": "^3.10.4",
-    "graphql": "^16.8.1"
+    "graphql": "^16.8.1",
+    "react-datepicker": "^6.9.0"
   }
 }

@@ -1,15 +1,15 @@
 import { gql } from '@apollo/client';
 
 // export const QUERY_GROUPSPACE = gql`
-//   // query listings {
-//   //   category[0]._id {
-//   //       _id
-//   //       imageSrc
-//   //       title
-//   //       price
-//   //       text
-//   //   }
-//   // }
+//   query listings {
+//        category[0]._id {
+//         _id
+//         imageSrc
+//         title
+//         price
+//         text
+//     }
+//   }
 // `;
 
 export const QUERY_HOUSESPACE = gql`
