@@ -21,7 +21,7 @@ const typeDefs = gql`
     owner: String!
     address: String!
     description: String
-    image: String
+    images: [String]
     pricePerHour: Float!
     availability: Boolean!
     rating: Float
@@ -45,6 +45,10 @@ const typeDefs = gql`
     user: User
   }
 
+  type Checkout{
+    session: ID
+  }
+
   type Query {
     user: User
     categories: [Category]
@@ -52,7 +56,8 @@ const typeDefs = gql`
     listings: [Listing]
     listing(listingId: ID!): Listing
     booking(_id: ID!): Booking
-    listingsByCategory(category: String!): [Listing]
+    listingsByCategory(category: String!): [Listing], 
+    checkout(listingId: ID!, startTime: String!, endTime: String!): Checkout
   }
 
   type Mutation {

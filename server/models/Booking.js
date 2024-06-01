@@ -1,6 +1,11 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
+
+function convertDate (date){
+  return date.toLocaleString();
+}
+
 const bookingSchema = new Schema({
 
   listing: {
@@ -10,17 +15,25 @@ const bookingSchema = new Schema({
   },
   startTime: {
     type: Date,
-    required: true
+    required: true, 
+    get: (timestamp)=> convertDate(timestamp)
   },
   endTime: {
     type: Date,
-    required: true
+    required: true,
+    get: (timestamp)=> convertDate(timestamp)
   },
   totalPrice: {
     type: Number,
     required: true
   }
   // isPaid? boolean
+}, 
+{
+  id: false, 
+  toJSON: {
+    getters: TransformStreamDefaultController
+  }
 });
 
 const Booking = mongoose.model('Booking', bookingSchema);

@@ -3,11 +3,10 @@ import { Dialog, DialogPanel } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import logo from '../../images/logo2.jpg'
 import { Link } from 'react-router-dom';
+import Auth from '../utils/auth';
 
 const navigation = [
   { linkText: 'Profile', linkRoute: '/profile' },
-  { linkText: 'Cart', linkRoute: '/cart' },
-  { linkText: 'Login', linkRoute: '/login' },
 ]
 
 export default function NavBar() {
@@ -42,6 +41,11 @@ export default function NavBar() {
           {navigation.map((item) => (
             <Link key={item.linkText} to={item.linkRoute} className={"text-xl font-semibold leading-6"}>{item.linkText}</Link>
           ))}
+          {
+            Auth.loggedIn() ?
+              (<li className={'mx-10 md: text-4xl m-2'}><Link onClick={Auth.logout} className={"text-white no-underline"}>Logout</Link></li>) :
+              (<li className={'mx-10 md: text-4xl m-2'}><Link to="/login" className={"text-white no-underline"}>Login</Link></li>)
+          }
         </div>
       </nav>
 

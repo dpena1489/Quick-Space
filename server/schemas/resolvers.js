@@ -1,6 +1,7 @@
 const { User, Listing, Category, Booking } = require('../models');
 const { signToken, AuthenticationError } = require('../utils/auth');
-// const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
+const stripe = require('stripe')('sk_test_51PHFPXLGaswMygELIHIwpTp5hjiN4ddyjFdIN81EnC5hb0jmeSnVsxKFYT60LCUglNbMACzmowFSIOIHtspDwlZT00a0byD2j2');
+const { calculateTotalHours } = require('../utils/convertTime')
 
 
 const resolvers = {
@@ -34,10 +35,10 @@ const resolvers = {
     },
 
     listingsByCategory: async (parent, { category }, context) => {
-      if (context.user) {
-        return await Listing.find({ category: category }).populate('category');
-      }
-      throw AuthenticationError
+      // if (context.user) {
+      return await Listing.find({ category: category }).populate('category');
+      // }
+      // throw AuthenticationError
     },
 
     booking: async (parent, { _id }, context) => {
@@ -46,38 +47,68 @@ const resolvers = {
       }
       throw AuthenticationError
 
-    },      
-    // checkout: async (parent, args, context) => {
-      //   const url = new URL(context.headers.referer).origin;
-      //   // We map through the list of products sent by the client to extract the _id of each item and create a new Order.
-      //   await Order.create({ products: args.products.map(({ _id }) => _id) });
-      //   const line_items = [];
+    },
+    checkout: async (parent, { listingId, phQuantity, startTime, endTime }, context) => {
+      try {
+
+        // calculate the total hours by ttaking the start time and end time
+        const totalHours = calculateTotalHours(startTime, endTime)
+       
+
+        const convertedStartTime = new Date(startTime).toLocaleDateString()
+        const convertedEndTime = new Date(endTime).toLocaleString()
+
+        const url = new URL(context.headers.referer).origin;
+        const listingData = await Listing.findById(listingId).populate('category');
+        const bookingData = await Booking.create({ listing: listingId, startTime: convertedStartTime, endTime: convertedEndTime, totalPrice: listingData.pricePerHour * totalHours })
+
+
+        const updatedUser = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $addToSet: { bookings: bookingData._id } },
+          { new: true }
+        );
+
+        const line_items = [];
+        const listingImg = await listingData.images.map((listing) => {
+        
+          return listing
+        })
+
     
-      //   for (const product of args.products) {
-      //     line_items.push({
-      //       price_data: {
-      //         currency: 'usd',
-      //         product_data: {
-      //           name: product.name,
-      //           description: product.description,
-      //           images: [`${url}/images/${product.image}`],
-      //         },
-      //         unit_amount: product.price * 100,
-      //       },
-      //       quantity: product.purchaseQuantity,
-      //     });
-      //   }
-    
-      //   const session = await stripe.checkout.sessions.create({
-      //     payment_method_types: ['card'],
-      //     line_items,
-      //     mode: 'payment',
-      //     success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
-      //     cancel_url: `${url}/`,
-      //   });
-    
-      //   return { session: session.id };
-      // },
+
+        const product = await stripe.products.create({
+          name: listingData.title,
+          description: listingData.description,
+          images: listingImg,
+        })
+
+        const price = await stripe.prices.create({
+          product: product.id,
+          unit_amount: listingData.pricePerHour * 100,
+          currency: 'usd',
+        })
+
+        line_items.push({
+          price: price.id,
+          quantity: totalHours
+        })
+
+
+        const session = await stripe.checkout.sessions.create({
+          payment_method_types: ['card'],
+          line_items,
+          mode: 'payment',
+          success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
+          cancel_url: `${url}/`,
+        });
+
+        console.log(session.id);
+        return { session: session.id };
+      } catch (error) {
+        console.log(error);
+      }
+    },
   },
 
   // order: async (parent, { _id }, context) => {

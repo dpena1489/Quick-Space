@@ -36,6 +36,8 @@ const userSchema = new Schema({
       ref: 'Booking'
     }
   ]
+}, {
+  id: false
 });
 
 // set up pre-save middleware to create password
