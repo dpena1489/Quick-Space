@@ -1,11 +1,8 @@
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { StarIcon as StarIconSolid } from '@heroicons/react/24/solid';
-import { StarIcon as StarIconOutline } from '@heroicons/react/24/outline';
-import DatePicker from "react-datepicker";
 import Card from 'react-bootstrap/Card';
+import CardRatingStars from '../components/CardRatingStars';
+import DateTimePicker from '../components/DateTimePicker';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import 'react-datepicker/dist/react-datepicker-cssmodules.css';
 
 // Mocking api while someone finds out why its not working. 
 const cardArray = [
@@ -101,48 +98,13 @@ const cardArray = [
   },
 ]
 
-const CardRatingStars = ({ starRating }) => {
-  const solidStars = Math.floor(starRating);
-  const emptyStars = 5 - solidStars;
-
-  const solidStarsArr = Array(solidStars).fill("empty");
-  const emptyStarsArr = Array(emptyStars).fill("empty");
-
-
-  return (
-    <Card.Text className='flex text-blue'>
-      {solidStarsArr.map((_, index) => <StarIconSolid key={index} className="h-6 w-6 text-blue"/>)}
-      {emptyStarsArr.map((_, index) => <StarIconOutline key={index} className="h-6 w-6 text-blue"/>)}
-    </Card.Text>
-  )
-}
-
 function HouseSpace() {
-  const [startDate, setStartDate] = useState(
-    new Date()
-  );
-
-  const filterPassedTime = (time) => {
-    const currentDate = new Date();
-    const selectedDate = new Date(time);
-
-    return currentDate.getTime() < selectedDate.getTime();
-  };
-
   return (
     <div>
       <div className='text-center'>
         <h1 className='font-bold m-6 text-3xl'>House Spaces</h1>
         <h2 className='mb-2'>Please select a date and time:</h2>
-        <div className='text-black'>
-          <DatePicker
-            selected={startDate}
-            onChange={(date) => setStartDate(date)}
-            showTimeSelect
-            showIcon
-            filterTime={filterPassedTime}
-          />
-        </div>
+        <DateTimePicker />
       </div>
 
       <div className={"flex flex-wrap justify-evenly"}>

@@ -1,10 +1,7 @@
-
-import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
+import Card from 'react-bootstrap/Card';
+import DateTimePicker from '../components/DateTimePicker';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-import { useState } from 'react';
 
 const cardArray = [
   {
@@ -19,29 +16,12 @@ const cardArray = [
 ]
 
 function StudioSpace() {
-  const [startDate, setStartDate] = useState(new Date());
-
-  const filterPassedTime = (time) => {
-    const currentDate = new Date();
-    const selectedDate = new Date(time);
-
-    return currentDate.getTime() < selectedDate.getTime();
-  };
-  
   return (
     <div>
       <div className='text-center'>
         <h1 className='font-bold m-6 text-3xl'>Studio Spaces</h1>
         <h2 className='mb-2'>Please select a date and time:</h2>
-        <div className='text-black'>
-          <DatePicker
-            selected={startDate}
-            onChange={(date) => setStartDate(date)}
-            showTimeSelect
-            showIcon
-            filterTime={filterPassedTime}
-          />
-        </div>
+        <DateTimePicker />
       </div>
 
       <div className={"flex flex-wrap justify-evenly"}>
