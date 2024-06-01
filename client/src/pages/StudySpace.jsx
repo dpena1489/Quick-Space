@@ -1,56 +1,87 @@
-import { Link } from 'react-router-dom';
-import Card from 'react-bootstrap/Card';
-import DateTimePicker from '../components/DateTimePicker';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import ShowListings from '../components/ShowListings';
 
-const cardArray = [
+// Mocking api while someone finds out why its not working. 
+const StudySpacesMockedData = [
   {
     id: "1",
-    imageSrc: "",
-    title: "Chicago Apartment",
-    price: "$40 p/hr",
-    text: "A charming studio apartment on Chicago's lakefront.",
-    buttonText: "See Details",
-    link: "/details"
+    title: 'Quiet Library Room',
+    owner: 'Sarah Johnson',
+    address: '123 Library Street',
+    description: 'A quiet library room perfect for focused studying and research.',
+    images: ['', '', ''],
+    pricePerHour: 80.00,
+    availability: true,
+    rating: 2.6,
+    capacity: 8,
+    rules: 'Maintain silence in the library. No food or drinks near books.',
+    amenities: ['Study Desks', 'Bookshelves', 'Reading Lamps'],
+    // category: categories[3]._id
   },
-]
+  {
+    id: "2",
+    title: 'Cozy Study Nook',
+    owner: 'Michael Brown',
+    address: '456 Bookworm Avenue',
+    description: 'A cozy study nook with comfortable seating and ample natural light.',
+    images: ['', '', ''],
+    pricePerHour: 55.00,
+    availability: true,
+    rating: 4.5,
+    capacity: 4,
+    rules: 'No loud noises. Keep the space tidy and organized.',
+    amenities: ['Comfy Chairs', 'Study Tables', 'Large Windows'],
+    // category: categories[3]._id
+  },
+  {
+    id: "3",
+    title: 'Private Study Room',
+    owner: 'Emma Wilson',
+    address: '789 Quiet Street',
+    description: 'A private study room with a peaceful atmosphere for individual study sessions.',
+    images: ['', '', ''],
+    pricePerHour: 50.00,
+    availability: true,
+    rating: 3.7,
+    capacity: 2,
+    rules: 'Respect others\' privacy. Keep noise levels to a minimum.',
+    amenities: ['Desk', 'Chair', 'Quiet Environment'],
+    // category: categories[3]._id
+  },
+  {
+    id: "4",
+    title: 'Modern Coworking Space',
+    owner: 'Olivia Taylor',
+    address: '101 Workspace Avenue',
+    description: 'A modern coworking space with flexible seating options and high-speed internet.',
+    images: ['', '', ''],
+    pricePerHour: 50.00,
+    availability: true,
+    rating: 4.8,
+    capacity: 10,
+    rules: 'Respect others\' workspace. Keep noise levels appropriate for work.',
+    amenities: ['Shared Desks', 'Meeting Rooms', 'High-Speed Internet'],
+    // category: categories[3]._id
+  },
+  {
+    id: "5",
+    title: 'University Study Lounge',
+    owner: 'Daniel White',
+    address: '234 Campus Drive',
+    description: 'A university study lounge equipped with study carrels and group study areas.',
+    images: ['', '', ''],
+    pricePerHour: 55.00,
+    availability: true,
+    rating: 1.9,
+    capacity: 20,
+    rules: 'Keep noise levels appropriate for studying. Respect other students\' space.',
+    amenities: ['Study Carrels', 'Group Study Areas', 'Quiet Environment'],
+    // category: categories[3]._id
+  },
+];
 
 function StudySpace() {
   return (
-    <div>
-      <div className='text-center'>
-        <h1 className='font-bold m-6 text-3xl'>Study Spaces</h1>
-        <h2 className='mb-2'>Please select a date and time:</h2>
-        <DateTimePicker />
-      </div>
-
-      <div className={"flex flex-wrap justify-evenly"}>
-        {cardArray.map((card) => {
-          return (
-            <div className={"my-4"} key={card.id}>
-              <Card style={{ width: '18rem' }}>
-                <Card.Img variant="top" src={card.imageSrc} style={{
-                  minHeight: "250px",
-                  maxHeight: "250px"
-                }} />
-                <Card.Body>
-                  <Card.Title style={{ color: 'white' }}>{card.title}</Card.Title>
-                  <Card.Text style={{ minHeight: "150px" }}>{card.text}</Card.Text>
-                  <Link to={card.link}>
-                    <button
-                      type="button"
-                      className="rounded-md bg-sky-600 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-sky-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                    >
-                      {card.buttonText}
-                    </button>
-                  </Link>
-                </Card.Body>
-              </Card>
-            </div>
-          )
-        })}
-      </div>
-    </div>
+    <ShowListings pageTitle={"Study Spaces"} listingData={StudySpacesMockedData}/>
   );
 };
 

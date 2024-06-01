@@ -17,7 +17,7 @@ db.once('open', async () => {
   console.log('Categories seeded');
 
   const listings = await Listing.insertMany([
-    //the following five listings are part of the 'Group Space' category.
+    //the following 5 listings are part of the 'Group Space' category.
     {
       title: 'Spacious Meeting Room',
       owner: 'John Doe',
@@ -88,7 +88,7 @@ db.once('open', async () => {
       amenities: ['Display Walls', 'Lighting Equipment', 'Seating Area'],
       category: categories[0]._id
     },
-    //the following five listings are part of 'House Space' category.
+    //the following 5 listings are part of the 'House Space' category.
     {
       title: 'Modern Loft Apartment',
       owner: 'Jessica Brown',
@@ -159,7 +159,7 @@ db.once('open', async () => {
       amenities: ['Mountain Views', 'Deck', 'Hiking Trails'],
       category: categories[1]._id
     },
-    //the follwoing 5 listings are listing objects for the 'Studio Space' category
+    //the follwoing 5 listings are part of the 'Studio Space' category
     {
       title: 'Cozy Home Studio',
       owner: 'Jane Smith',
@@ -230,7 +230,7 @@ db.once('open', async () => {
       amenities: ['Soundproofing', 'Mixing Console', 'Vocal Booth'],
       category: categories[2]._id
     },
-    // the following 5 spaces are for the 'study space' category
+    // the following 5 listings are part of the 'Study space' category
     {
       title: 'Quiet Library Room',
       owner: 'Sarah Johnson',
