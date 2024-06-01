@@ -11,9 +11,9 @@ import Profile from "./pages/Profile.jsx";
 import StudioSpace from './pages/StudioSpace.jsx';
 import StudySpace from './pages/StudySpace.jsx';
 import Details from './components/Details.jsx';
-import './index.css'
 import Login from './components/Login.jsx'
 import CheckoutForm from './components/CheckoutForm.jsx';
+import './index.css'
 
 const router = createBrowserRouter([
     {
