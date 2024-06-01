@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import {createBrowserRouter, RouterProvider} from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import App from './App.jsx';
 import About from "./pages/About.jsx";
 import Cart from './pages/Cart.jsx'
@@ -18,41 +18,40 @@ import './index.css'
 const router = createBrowserRouter([
     {
         path: '/',
-        element: <App/>,
+        element: <App />,
         errorElement: <h1 className="display-2">Wrong page!</h1>,
         children: [
             {
                 path: "/about",
-                element: <About/>
+                element: <About />
             },
             {
                 path: "/cart",
-                element: <Cart/>
+                element: <Cart />
             },
             {
                 path: "/group-space",
-                element: <GroupSpace/>
+                element: <GroupSpace />
             },
             {
                 index: true,
-                element: <Home/>
+                element: <Home />
             },
             {
                 path: "/house-space",
-
-                element: <HouseSpace/>
+                element: <HouseSpace />
             },
             {
                 path: "/profile",
-                element: <Profile/>
+                element: <Profile />
             },
             {
                 path: "/studio-space",
-                element: <StudioSpace/>
+                element: <StudioSpace />
             },
             {
                 path: "/study-space",
-                element: <StudySpace/>
+                element: <StudySpace />
             },
             {
                 path: "/login",
@@ -72,6 +71,6 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
     <React.StrictMode>
-        <RouterProvider router={router}/>
+        <RouterProvider router={router} />
     </React.StrictMode>
 );

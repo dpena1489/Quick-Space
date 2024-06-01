@@ -38,7 +38,6 @@ const cardArray = [
 ]
 
 function Home() {
-
   return (
     <div className={"flex flex-wrap justify-evenly"}>
       {cardArray.map((card) => {
@@ -50,7 +49,7 @@ function Home() {
                 maxHeight: "250px"
               }} />
               <Card.Body>
-                <Card.Title style={{ color: 'white' }}>{card.title}</Card.Title>
+                <Card.Title>{card.title}</Card.Title>
                 <Card.Text style={{ minHeight: "150px" }}>{card.text}</Card.Text>
                 <Link to={card.link}>
                   <button
