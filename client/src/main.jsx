@@ -10,9 +10,11 @@ import HouseSpace from './pages/HouseSpace.jsx';
 import Profile from "./pages/Profile.jsx";
 import StudioSpace from './pages/StudioSpace.jsx';
 import StudySpace from './pages/StudySpace.jsx';
+import Details from './components/Details.jsx';
 import './index.css'
-
-
+import Login from './components/Login.jsx'
+import CheckoutForm from './components/CheckoutForm.jsx';
+import ListProperties from './components/ListProperties.jsx';
 
 const router = createBrowserRouter([
     {
@@ -21,43 +23,49 @@ const router = createBrowserRouter([
         errorElement: <h1 className="display-2">Wrong page!</h1>,
         children: [
             {
-                path: "/about",
-                index: true,
-                element: <About/>
-            },
-            {
-                path: "/cart",
-                index: true,
-                element: <Cart/>
-            },
-            {
-                path: "/group-space",
-                index: true,
-                element: <GroupSpace/>
-            },
-            {
                 index: true,
                 element: <Home/>
             },
             {
-                path: "/house-space",
-                index: true,
-                element: <HouseSpace/>
+                path: "/about",
+                element: <About/>
             },
+            {
+                path: "/cart",
+                element: <Cart/>
+            },
+            {
+                path: "/:id",
+                element: <ListProperties />
+            },
+            // {
+            //     path: "/house-space",
+
+            //     element: <HouseSpace/>
+            // },
             {
                 path: "/profile",
-                index: true,
                 element: <Profile/>
             },
+            // {
+            //     path: "/studio-space",
+            //     element: <StudioSpace/>
+            // },
+            // {
+            //     path: "/study-space",
+            //     element: <StudySpace/>
+            // },
             {
-                path: "/studio-space",
-                index: true,
-                element: <StudioSpace/>
+                path: "/login",
+                element: <Login />
             },
             {
-                path: "/study-space",
-                index: true,
-                element: <StudySpace/>
+                path: "/details/:id",
+                element: <Details />
+            },
+            {
+                path: "/checkout-form",
+                element: <CheckoutForm />
             },
         ]
     }

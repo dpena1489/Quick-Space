@@ -24,7 +24,9 @@ function Cart() {
 
     return (
         <div>
-            <h1>Cart</h1>
+            <h1 className='font-bold m-6 text-3xl'>Cart</h1>
+
+            <div className='ml-6'>
             <ul>
                 {cartItems.map(item => (
                     <li key={item.id}>
@@ -36,7 +38,15 @@ function Cart() {
             </ul>
             <p>Total: ${calculateTotalPrice()}</p>
        
-            <Link to="/checkout" className="button">Proceed to Checkout</Link>
+            <Link to="/checkout" className="button">
+            <button
+                    type="button"
+                    className="rounded-md bg-sky-600 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-sky-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 mt-3"
+                  >
+                    Proceed to Checkout
+                  </button>
+            </Link>
+            </div>
         </div>
     );
 }
