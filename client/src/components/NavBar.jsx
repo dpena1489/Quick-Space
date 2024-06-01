@@ -76,6 +76,7 @@ export default function NavBar() {
             <div className="flex flex-col space-y-2 py-6">
               {navigation.map((item) => (
                 <button
+                  key={item.linkText}
                   className={"-mx-3 block rounded-lg px-3 py-2 text-base text-right font-semibold leading-7 text-gray-900 hover:bg-gray-50"}
                   onClick={() => setMobileMenuOpen(false)}
                 >
