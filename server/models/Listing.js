@@ -35,11 +35,11 @@ const listingSchema = new Schema({
     type: Boolean,
     default: true
   },
-  // rating: {
-  //   type: Number,
-  //   min: 0,
-  //   max: 5
-  // },
+  rating: {
+    type: Number,
+    min: 0,
+    max: 5
+  },
   // reviews: [
   //   {
   //     type: Schema.Types.ObjectId,
