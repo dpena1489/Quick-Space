@@ -43,8 +43,8 @@ export default function NavBar() {
           ))}
           {
             Auth.loggedIn() ?
-              (<li className={'mx-10 md: text-4xl m-2'}><Link onClick={Auth.logout} className={"text-white no-underline"}>Logout</Link></li>) :
-              (<li className={'mx-10 md: text-4xl m-2'}><Link to="/login" className={"text-white no-underline"}>Login</Link></li>)
+              (<Link onClick={Auth.logout} className={"text-xl font-semibold leading-6"}>Logout</Link>) :
+              (<Link to="/login" className={"text-xl font-semibold leading-6"}>Login</Link>)
           }
         </div>
       </nav>
@@ -87,6 +87,19 @@ export default function NavBar() {
                   <Link key={item.linkText} to={item.linkRoute}>{item.linkText}</Link>
                 </button>
               ))}
+              {
+                Auth.loggedIn() ?
+                  (
+                    <button className={"-mx-3 block rounded-lg px-3 py-2 text-base text-right font-semibold leading-7 text-gray-900 hover:bg-gray-50"}>
+                      <Link onClick={Auth.logout}>Logout</Link>
+                    </button>
+                  ) :
+                  (
+                    <button className={"-mx-3 block rounded-lg px-3 py-2 text-base text-right font-semibold leading-7 text-gray-900 hover:bg-gray-50"}>
+                      <Link to="/login">Login</Link>
+                    </button>
+                  )
+              }
             </div>
           </div>
         </DialogPanel>
