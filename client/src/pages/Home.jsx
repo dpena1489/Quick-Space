@@ -46,9 +46,24 @@ function Home() {
   ];
 
 
+  useEffect(() => {
+    if (data) {
+      const categories = data.categories; // Adjust based on the actual structure of your query result
+
+      // Map the IDs to the cardArray
+      const updatedCards = cardArray.map(card => {
+        const matchingCategory = categories.find(category => category.name === card.title);
+        return matchingCategory ? { ...card, id: matchingCategory._id } : card;
+      });
+
+      setCards(updatedCards);
+    }
+  }, [data]);
+
   return (
     <div className={"flex flex-wrap justify-evenly"}>
-      {cardArray.map((card) => {
+      {cards.map((card) => {
+
         return (
           <div className={"my-4"} key={card.id}>
             <Card style={{ width: '18rem' }}>
@@ -75,5 +90,6 @@ function Home() {
     </div>
   );
 }
+
 
 export default Home;
