@@ -5,35 +5,42 @@ import { useQuery } from '@apollo/client';
 import { QUERY_CATEGORIES } from '../utils/queries'
 import React, { useEffect, useState } from 'react';
 
+import groupSpace from '../../images/Group_Space.jpeg';
+import houseSpace from '../../images/House_Space.jpeg';
+import studioSpace from '../../images/studio_space2.jpeg';
+import studySpace from '../../images/study_space.jpeg';
+
 
 function Home() {
   const { loading, error, data } = useQuery(QUERY_CATEGORIES);
   const [cards, setCards] = useState([]);
 
+  
+
   const cardArray = [
     {
-      imageSrc: '../../images/Group_Space.jpeg',
+      imageSrc: groupSpace,
       title: 'Group Space',
       text: 'Find a space to accommodate your group. From baby showers to community meetings, find a space to host the perfect event!',
       buttonText: 'See Group Spaces',
       link: '/group-space',
     },
     {
-      imageSrc: '../../images/House_Space.jpeg',
+      imageSrc: houseSpace,
       title: 'House Space',
       text: 'Find a space to accommodate you or a small group. The house space is a good option for an individual or group searching for last minute accommodation.',
       buttonText: 'See House Spaces',
       link: '/house-space',
     },
     {
-      imageSrc: '../../images/studio_space2.jpeg',
+      imageSrc: studioSpace,
       title: 'Studio Space',
       text: 'Need a quiet space to work on your music? Studio space can help you find the perfect space near you.',
       buttonText: 'See Studio Spaces',
       link: '/studio-space',
     },
     {
-      imageSrc: '../../images/study_space.jpeg',
+      imageSrc: studySpace,
       title: 'Study Space',
       text: "Some quick example text to build on the card title and make up the bulk of the card's content.",
       buttonText: 'See Study Spaces',
