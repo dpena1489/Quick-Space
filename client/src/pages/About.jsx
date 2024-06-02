@@ -2,7 +2,7 @@ function About() {
     return (
         <div className={"m-4"}>
             <div>
-                <h1>About Quick Space</h1>
+                <h1 className = "font-bold text-xl">About Quick Space</h1>
                 <p>Quick Space is a short-term rental app to accomodate your needs. Whether it be sleeping quarters because your flight arrived 
                     at 6am but checkin is at 3pm, or a group space that for a birthday party. We have it all here at your fingertips.
                 </p>
@@ -19,7 +19,7 @@ function About() {
                             type="email"
                             name="email"
                             id="email"
-                            className="bg-white block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600"
+                            className="bg-white text-black block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600"
                             placeholder="you@example.com"
                         />
                     </div>
@@ -33,7 +33,7 @@ function About() {
                             rows={4}
                             name="comment"
                             id="comment"
-                            className="bg-white block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600"
+                            className="bg-white block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 text-black"
                             defaultValue={''}
                         />
                     </div>

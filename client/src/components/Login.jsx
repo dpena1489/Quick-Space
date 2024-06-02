@@ -43,7 +43,7 @@ function Login() {
       <form onSubmit={handleFormSubmit} className='ml-6'>
         <div className="flex-row space-between my-2">
           <label htmlFor="email">Email address:</label>
-          <input className='border-2 white ml-2'
+          <input className='border-2 white ml-2 text-black'
             placeholder="youremail@test.com"
             name="email"
             type="email"
