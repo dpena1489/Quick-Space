@@ -25,7 +25,11 @@ const bookingSchema = new Schema({
   totalPrice: {
     type: Number,
     required: true
-  }
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now
+  },
   // isPaid? boolean
 }, 
 {

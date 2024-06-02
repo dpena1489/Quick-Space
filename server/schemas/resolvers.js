@@ -1,4 +1,5 @@
 const { User, Listing, Category, Booking } = require('../models');
+const { populate } = require('../models/User');
 const { signToken, AuthenticationError } = require('../utils/auth');
 const stripe = require('stripe')('sk_test_51PHFPXLGaswMygELIHIwpTp5hjiN4ddyjFdIN81EnC5hb0jmeSnVsxKFYT60LCUglNbMACzmowFSIOIHtspDwlZT00a0byD2j2');
 const { calculateTotalHours } = require('../utils/convertTime')
@@ -9,7 +10,18 @@ const resolvers = {
 
     user: async (parent, args, context) => {
       if (context.user) {
-        return await User.findById(context.user._id).populate('bookings');
+        return await User.findById(context.user._id).populate({
+          path: 'bookings',
+          populate: {
+            path: 'listing', 
+            model: 'Listing', 
+            populate: {
+              path: 'category',
+              model: 'Category'
+            }
+          }, 
+          options: { sort: { createdAt: -1 } }
+        });
       }
       throw AuthenticationError
     },
@@ -43,7 +55,7 @@ const resolvers = {
 
     booking: async (parent, { _id }, context) => {
       if (context.user) {
-        return await Booking.findById(_id);
+        return await Booking.findById(_id).populate('listing');
       }
       throw AuthenticationError
 
@@ -55,8 +67,10 @@ const resolvers = {
         const totalHours = calculateTotalHours(startTime, endTime)
        
 
-        const convertedStartTime = new Date(startTime).toLocaleDateString()
+        const convertedStartTime = new Date(startTime).toLocaleString()
         const convertedEndTime = new Date(endTime).toLocaleString()
+        
+
 
         const url = new URL(context.headers.referer).origin;
         const listingData = await Listing.findById(listingId).populate('category');
@@ -99,7 +113,7 @@ const resolvers = {
           payment_method_types: ['card'],
           line_items,
           mode: 'payment',
-          success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
+          success_url: `${url}/profile`,
           cancel_url: `${url}/`,
         });
 

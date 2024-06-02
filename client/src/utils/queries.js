@@ -68,3 +68,41 @@ query checkout($listingId: ID!, $startTime: String!, $endTime: String!) {
     }
   }
   `
+
+  export const GET_BOOKINGS= gql`
+  query User {
+    user {
+      _id
+      email
+      firstName
+      lastName
+      username
+      bookings {
+        _id
+        listing {
+          _id
+          title
+          owner
+          address
+          description
+          images
+          pricePerHour
+          availability
+          rating
+          capacity
+          rules
+          amenities
+          createdAt
+          category {
+            _id
+            name
+          }
+        }
+        startTime
+        endTime
+        totalPrice
+        createdAt
+      }
+    }
+  }
+  `

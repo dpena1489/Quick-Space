@@ -34,7 +34,7 @@ function Details() {
 
 
     async function submitCheckout (){
- 
+
         await checkout({
             variables: {
                 listingId: id,
@@ -66,9 +66,9 @@ function Details() {
                     <div>
                         <div>
 
-                            <DatePicker className='border-2 white' selected={startDate} showTimeSelect onChange={(date) => setStartDate(date)} />
+                            <DatePicker className='border-2 white text-black' selected={startDate} showTimeSelect onChange={(date) => setStartDate(date)} />
 
-                            <DatePicker className='border-2 white' selected={endDate} showTimeSelect onChange={(date) => setEndDate(date)} />
+                            <DatePicker className='border-2 white text-black' selected={endDate} showTimeSelect onChange={(date) => setEndDate(date)} />
                         </div>
 
                         <button
