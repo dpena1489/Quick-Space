@@ -34,7 +34,7 @@ function CardImageCarousels ({ images }) {
       <span className="isolate flex justify-between rounded-md shadow-sm">
         <button
           type="button"
-          className={`relative inline-flex items-center rounded-l-md bg-red px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 focus:z-10`}
+          className={`relative inline-flex items-center rounded-l-md ${imgOn === 0 ? 'bg-gray-300' : 'bg-sky-600 hover:bg-sky-500'} px-2 py-2 text-white ring-1 ring-inset ring-gray-300 focus:z-10`}
           onClick={() => updateImage("PREVIOUS")}
         >
           <span className="sr-only">Previous</span>
@@ -42,7 +42,7 @@ function CardImageCarousels ({ images }) {
         </button>
         <button
           type="button"
-          className="relative -ml-px inline-flex items-center rounded-r-md bg-white px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-10"
+          className={`relative -ml-px inline-flex items-center rounded-r-md ${imgOn === numberOfImages -1 ? 'bg-gray-300' : 'bg-sky-600 hover:bg-sky-500'} px-2 py-2 text-white ring-1 ring-inset ring-gray-300 focus:z-10`}
           onClick={() => updateImage("NEXT")}
         >
           <span className="sr-only">Next</span>
