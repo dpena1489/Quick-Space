@@ -7,7 +7,6 @@ function convertDate (date){
 }
 
 const bookingSchema = new Schema({
-
   listing: {
     type: Schema.Types.ObjectId,
     ref: 'Listing',
