@@ -7,12 +7,8 @@ import React, { useEffect, useState } from 'react';
 
 
 function Home() {
-
   const { loading, error, data } = useQuery(QUERY_CATEGORIES);
   const [cards, setCards] = useState([]);
-
-
-
 
   const cardArray = [
     {
@@ -72,9 +68,9 @@ function Home() {
                 maxHeight: "250px"
               }} />
               <Card.Body>
-                <Card.Title style={{ color: 'white' }}>{card.title}</Card.Title>
+                <Card.Title>{card.title}</Card.Title>
                 <Card.Text style={{ minHeight: "150px" }}>{card.text}</Card.Text>
-                <Link to={card.id}>
+                <Link to={`${card.id}?title=${card.title}`}>
                   <button
                     type="button"
                     className="rounded-md bg-sky-600 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-sky-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
