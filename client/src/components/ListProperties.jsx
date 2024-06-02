@@ -10,10 +10,15 @@ export default function ListProperties() {
         variables: { category: id }
     })
 
+    const queryString = document.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const paramValue = urlParams. get('title');
+  
+
     const listingData = data?.listingsByCategory || []
 
     // TODO : We need to fix this page title and this can probably be done if we update the models and pass this information down. 
     return (
-        <ShowListings pageTitle={"Example"} listingData={listingData} />
+        <ShowListings pageTitle={paramValue} listingData={listingData} />
     )
 }
