@@ -7,6 +7,7 @@ import Auth from '../utils/auth';
 
 const navigation = [
   { linkText: 'Profile', linkRoute: '/profile' },
+  { linkText: 'Listings', linkRoute: '/' }
 ]
 
 export default function NavBar() {
@@ -41,9 +42,11 @@ export default function NavBar() {
           {navigation.map((item) => (
             <Link key={item.linkText} to={item.linkRoute} className={"text-xl font-semibold leading-6"}>{item.linkText}</Link>
           ))}
+
           {
             Auth.loggedIn() ?
-              (<Link onClick={Auth.logout} className={"text-xl font-semibold leading-6"}>Logout</Link>) :
+              (
+              <Link onClick={Auth.logout} className={"text-xl font-semibold leading-6"}>Logout</Link>) :
               (<Link to="/login" className={"text-xl font-semibold leading-6"}>Login</Link>)
           }
         </div>

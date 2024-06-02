@@ -17,19 +17,19 @@ const typeDefs = gql`
 
   type Listing {
     _id: ID!
-    title: String!
-    owner: String!
-    address: String!
+    title: String
+    owner: String
+    address: String
     description: String
     images: [String]
-    pricePerHour: Float!
-    availability: Boolean!
+    pricePerHour: Float
+    availability: Boolean
     rating: Float
     capacity: Int
     rules: String
     amenities: [String]
     createdAt: String
-    category: Category!
+    category: Category
   }
 
   type Booking {
@@ -38,6 +38,7 @@ const typeDefs = gql`
     startTime: String!
     endTime: String!
     totalPrice: Float!
+    createdAt: String
   }
 
   type Auth{
