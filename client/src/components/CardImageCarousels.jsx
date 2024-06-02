@@ -7,12 +7,20 @@ function CardImageCarousels ({ images }) {
   const numberOfImages = images.length;
   const [imgSrc, setImgSrc] = useState('')
   const [imgOn, setImgOn] = useState(0);
+  const [lastImage, setLastImage] = useState(true);
 
   useEffect(()=> {
     if (numberOfImages === 0) {
       setImgSrc('https://st4.depositphotos.com/14953852/24787/v/450/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg');
     } else {
       setImgSrc(images[imgOn]);
+    }
+
+    // Logic for coloring of next Button
+    if(numberOfImages === 0 || imgOn === numberOfImages -1) {
+      setLastImage(true)
+    } else {
+      setLastImage(false)
     }
   }, [images, imgOn])
 
@@ -42,7 +50,7 @@ function CardImageCarousels ({ images }) {
         </button>
         <button
           type="button"
-          className={`relative -ml-px inline-flex items-center rounded-r-md ${imgOn === numberOfImages -1 ? 'bg-gray-300' : 'bg-sky-600 hover:bg-sky-500'} px-2 py-2 text-white ring-1 ring-inset ring-gray-300 focus:z-10`}
+          className={`relative -ml-px inline-flex items-center rounded-r-md ${lastImage ? 'bg-gray-300' : 'bg-sky-600 hover:bg-sky-500'} px-2 py-2 text-white ring-1 ring-inset ring-gray-300 focus:z-10`}
           onClick={() => updateImage("NEXT")}
         >
           <span className="sr-only">Next</span>
