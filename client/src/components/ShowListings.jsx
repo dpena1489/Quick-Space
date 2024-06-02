@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/20/solid'
 import Card from 'react-bootstrap/Card';
@@ -8,10 +8,18 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 const CardImageCarousels = ({ images }) => {
   const numberOfImages = images.length;
+  const [imgSrc, setImgSrc] = useState('')
   const [imgOn, setImgOn] = useState(0);
 
-  const updateImage = (value) => {
+  useEffect(()=> {
+    if (numberOfImages === 0) {
+      setImgSrc('https://st4.depositphotos.com/14953852/24787/v/450/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg');
+    } else {
+      setImgSrc(images[imgOn]);
+    }
+  }, [images, imgOn])
 
+  const updateImage = (value) => {
     if(value === "NEXT" && imgOn < numberOfImages -1) {
       setImgOn(currentImage => currentImage + 1)
     } else if (value === "PREVIOUS" && imgOn > 0) {
@@ -19,9 +27,10 @@ const CardImageCarousels = ({ images }) => {
     }
   }
 
+
   return (
     <div>
-      <Card.Img variant="top" src={images[imgOn]} style={{
+      <Card.Img variant="top" src={imgSrc} style={{
         minHeight: "250px",
         maxHeight: "250px"
       }} />
@@ -59,7 +68,7 @@ function ShowListings({ pageTitle, listingData }) {
       <div className={"flex flex-wrap justify-evenly"}>
         {listingData.map((card) => {
           return (
-            <div className={"my-4"} key={card.id}>
+            <div className={"my-4"} key={card._id}>
               <Card style={{ width: '18rem' }}>
                 <CardImageCarousels images={card.images} />
                 <Card.Body>
