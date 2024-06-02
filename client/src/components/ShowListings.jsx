@@ -1,17 +1,14 @@
 import { Link } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import CardRatingStars from '../components/CardRatingStars';
-import DateTimePicker from '../components/DateTimePicker';
 import CardImageCarousels from './CardImageCarousels';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function ShowListings({ pageTitle, listingData }) {
   return (
     <div>
-      <div className='text-center'>
+      <div className='text-center ml-8'>
         <h1 className='font-bold m-6 text-3xl'>{pageTitle}</h1>
-        <h2 className='mb-2'>Please select a date and time:</h2>
-        <DateTimePicker />
       </div>
 
       <div className={"flex flex-wrap justify-evenly"}>
