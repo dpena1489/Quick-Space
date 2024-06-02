@@ -6,10 +6,10 @@ import About from "./pages/About.jsx";
 import Cart from './pages/Cart.jsx'
 import Home from './pages/Home.jsx';
 import Profile from "./pages/Profile.jsx";
-import Details from './components/Details.jsx';
-import Login from './components/Login.jsx'
 import CheckoutForm from './components/CheckoutForm.jsx';
+import Details from './components/Details.jsx';
 import ListProperties from './components/ListProperties.jsx';
+import Login from './components/Login.jsx'
 import Signup from './components/Signup.jsx';
 import Auth from './utils/auth.js'
 import './index.css'
@@ -25,6 +25,10 @@ const router = createBrowserRouter([
                 element: <Home/>
             },
             {
+                path: "/:id",
+                element: Auth.loggedIn() ? <ListProperties /> : <Login />
+            },
+            {
                 path: "/about",
                 element: <About />
             },
@@ -33,24 +37,20 @@ const router = createBrowserRouter([
                 element: <Cart />
             },
             {
-                path: "/:id",
-                element: Auth.loggedIn() ? <ListProperties /> : <Login />
-            },
-            {
-                path: "/profile",
-                element: <Profile />
-            },
-            {
-                path: "/login",
-                element: <Login />
+                path: "/checkout-form",
+                element: <CheckoutForm />
             },
             {
                 path: "/details/:id",
                 element: Auth.loggedIn() ? <Details /> : <Login />
             },
             {
-                path: "/checkout-form",
-                element: <CheckoutForm />
+                path: "/login",
+                element: <Login />
+            },
+            {
+                path: "/profile",
+                element: <Profile />
             },
             {
                 path: '/signup',
