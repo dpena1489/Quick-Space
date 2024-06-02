@@ -23,7 +23,7 @@ db.once('open', async () => {
       owner: 'John Doe',
       address: '123 Main Street',
       description: 'A large meeting room suitable for group discussions and presentations.',
-      images: ['https://www.apartments.com/blog/sites/default/files/styles/x_large_hq/public/image/2023-06/ParkLine-apartment-in-Miami-FL.jpg?itok=kQmw64UU', 'https://pixabay.com/photos/green-meadow-mountains-switzerland-8534434/'],
+      images: ['https://mccannsystems.com/wp-content/uploads/2023/06/MCCSYS_JUNE_PROBlog1_ConferenceRoomDesign_St-LouisMO_PHOTO.jpeg','https://tse3.mm.bing.net/th?id=OIP.6RYpPqAuu5ZR1YQffzgKZAHaFI&pid=Api'],
       pricePerHour: 50.00,
       availability: true,
       rating: 2.5,
@@ -37,7 +37,7 @@ db.once('open', async () => {
       owner: 'Alice Johnson',
       address: '789 Elm Street',
       description: 'A modern conference hall with state-of-the-art facilities.',
-      images: [],
+      images: ['https://tse3.mm.bing.net/th?id=OIP.hfKf0JyrJ3PLQ69Pk4uMdQHaFj&pid=Api', 'https://tse1.mm.bing.net/th?id=OIP.Udgr4-lcHQaKNtf2ClF8rwHaFH&pid=Api'],
       pricePerHour: 80.00,
       availability: true,
       rating: 4.9,
@@ -51,7 +51,9 @@ db.once('open', async () => {
       owner: 'Michael Anderson',
       address: '321 Pine Street',
       description: 'A spacious rooftop terrace with panoramic views of the city skyline.',
-      images: [],
+
+      images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgIYFSwtIoMDITTTxSzHn4opvNyA-NXLCxGA&usqp=CAU', 'https://traveler.marriott.com/wp-content/uploads/2015/07/chicagoskyline-.jpg'],
+
       pricePerHour: 100.00,
       availability: true,
       rating: 3.7,
@@ -65,13 +67,15 @@ db.once('open', async () => {
       owner: 'Emily Wilson',
       address: '567 Maple Avenue',
       description: 'A community center equipped with meeting rooms, a gymnasium, and a kitchen.',
-      images: [],
+
+      images: ['https://www.lakeforestca.gov/sites/default/files/2023-04/community-center.jpg', 'https://www.bcmud.org/images/Community%20Center/Garden1%20-%20May%202020.jpg'],
+
       pricePerHour: 80.00,
       availability: true,
       rating: 1.6,
       capacity: 100,
       rules: 'Respect other users of the facility. Clean up after use.',
-      amenities: ['Meeting Rooms', 'Gymnasium', 'Kitchen'],
+      amenities: ['Meeting Rooms', 'Garden', 'Kitchen'],
       category: categories[0]._id
     },
     {
@@ -79,7 +83,9 @@ db.once('open', async () => {
       owner: 'Sophia Martinez',
       address: '890 Oakwood Drive',
       description: 'An art gallery space suitable for exhibitions, workshops, and events.',
-      images: [],
+
+      images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8a7SnWmgxVDuYhsIsMwKEmHeJOEdN0Kr-LmWFHYjrfiw0JvKgGopJ8yDoB4D6BNFvrq8&usqp=CAU', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqiIJtH65sFloyoqt3T9xp_0OzzZo40GcUMPafxD7lNpA9ivkpG1BEMwfYuBtsS7lUDYg&usqp=CAU', ''],
+
       pricePerHour: 120.00,
       availability: true,
       rating: 5.0,
@@ -94,7 +100,9 @@ db.once('open', async () => {
       owner: 'Jessica Brown',
       address: '123 Elm Street',
       description: 'A stylish loft apartment with modern amenities and city views.',
-      images: ['https://media.istockphoto.com/id/1293762741/photo/modern-living-room-interior-3d-render.jpg?s=1024x1024&w=is&k=20&c=KJNOdrG3iN0AKdcQfg65atySC1HLFgbikY2DEAkJDPE=', 'https://media.istockphoto.com/id/1213695547/photo/3d-rendering-of-an-elegant-bedroom.jpg?s=1024x1024&w=is&k=20&c=d7zrRoztFCqZ1z5YJNrcZxCDGgziwhPSWJv3Cwf_dHo='],
+
+      images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSoNfb0fyVMomzXy2ljtGKt0vNjyDqf1zohwA&usqp=CAU', 'https://www.istockphoto.com/en/photo/3d-rendering-of-an-elegant-bedroom-gm1213695547-352841832', ''],
+
       pricePerHour: 50.00,
       availability: true,
       rating: 4.8,
@@ -108,7 +116,9 @@ db.once('open', async () => {
       owner: 'Daniel White',
       address: '456 Oak Street',
       description: 'A cosy cabin retreat nestled in the woods, perfect for a weekend getaway.',
+
       images: ['https://media.istockphoto.com/id/1016887284/photo/cozy-place.jpg?s=1024x1024&w=is&k=20&c=Jzwt4als7qrBjaEYlSjcNXZa2qegBbZD0YCskunLqlc=', 'https://media.istockphoto.com/id/1335997056/photo/wooden-house-bedroom-peaceful-living-area.jpg?s=1024x1024&w=is&k=20&c=3fW7_IzsmOwj-dEzmxT70CVE32R9QYTo4ciwmzjgkXk='],
+
       pricePerHour: 70.00,
       availability: true,
       rating: 3.7,
@@ -122,7 +132,9 @@ db.once('open', async () => {
       owner: 'Olivia Taylor',
       address: '789 Ocean Avenue',
       description: 'A luxurious beach house with direct access to the beach and stunning ocean views.',
+
       images: ['https://cdn.pixabay.com/photo/2014/05/21/14/53/beach-house-349670_960_720.jpg', 'https://media.istockphoto.com/id/832047798/de/foto/sunset-beach-pfad-panorama-hintergrund.jpg?s=1024x1024&w=is&k=20&c=OredllCbz6tnHBbjE2CCsUdPObpJrdSG7FISUCl3Ato='],
+
       pricePerHour: 100.00,
       availability: true,
       rating: 4.9,
@@ -136,7 +148,11 @@ db.once('open', async () => {
       owner: 'Sophie Johnson',
       address: '101 Forest Lane',
       description: 'A charming cottage with a rustic feel, surrounded by beautiful gardens.',
+
+      images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQl-0t17JZ1F1QXipaKdVxHDhnxWVOg09FKzw&usqp=CAU', 'https://www.ecosia.org/c1faf204-e7a3-44d4-a283-fbfe8e8ac794', 'https://tse1.mm.bing.net/th?id=OIP.PaOyNPYyTpGBa5zrXGex9wHaE2&pid=Api'],
+
       images: ['https://cdn.pixabay.com/photo/2015/08/26/13/06/house-908459_1280.jpg', 'https://cdn.pixabay.com/photo/2016/08/12/03/41/cosmos-1587514_1280.jpg'],
+
       pricePerHour: 80.00,
       availability: true,
       rating: 1.6,
