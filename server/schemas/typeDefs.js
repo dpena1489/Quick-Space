@@ -57,7 +57,7 @@ const typeDefs = gql`
     listing(listingId: ID!): Listing
     booking(_id: ID!): Booking
     listingsByCategory(category: String!): [Listing], 
-    checkout(listingId: ID!, phQuantity: Int!): Checkout
+    checkout(listingId: ID!, startTime: String!, endTime: String!): Checkout
   }
 
   type Mutation {
