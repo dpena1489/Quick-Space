@@ -27,6 +27,11 @@ This application is covered under an MIT license
 
 ## Walkthrough
 
+
+
+https://github.com/dpena1489/Quick-Space/assets/150938385/0b6ea8a8-5b45-4ba8-8b48-5d3f873c8c01
+
+
 ## Link to Live Website
 
 Hosted on Render Link to Web Service on Render:
